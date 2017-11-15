@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+
+<!-- LOGO FRAGMENT -->
+<div th:fragment="logo" class="page-logo">
+    <a href="index.html">
+        <img src="../assets/pages/img/logo.png" alt="logo" class="logo-default" /> </a>
+    <div class="menu-toggler sidebar-toggler">
+        <span></span>
+    </div>
+</div>
+
+
+<!-- RESPONSIVE MENU FRAGMENT -->
+<div th:fragment="responsivemenu">
+	<a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse">
+    <span></span>
+	</a>
+</div>
+
+
+<!-- HOME BUTTON FRAGMENT -->
+<li th:fragment="homebutton" id="home_link_button">
+    <a th:href="index">
+        <i class="icon-home"></i>
+    </a>
+</li>
+
+
+<!-- USERNAME DROPDOWN FRAGMENT -->
+<ul th:fragment="usernamedropdown" class="dropdown-menu dropdown-menu-default">
+	<li>
+		<a href="staff-viewdetails">
+		<i class="icon-user"></i> My Profile </a>
+	</li>
+	 <li>
+		<a href="underconstruction">
+		<i class="icon-calendar"></i> My Calendar </a>
+	 </li>
+	 <li>
+		<a href="underconstruction">
+		<i class="icon-envelope-open"></i> My Inbox </a>
+	 </li>
+	 <li class="divider"> </li>
+	 <li>
+	     <a href="logout">
+         <i class="icon-key"></i> Log Out </a>
+	 </li>
+</ul>

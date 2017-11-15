@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<!-- COMMON BASE PAGE -->
+
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+
+<!-- BEGIN HEAD -->
+<head>
+    <meta charset="utf-8" />
+    <title>Add New Maintenance Request</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta content="" name="kodekode" />
+    <link th:href="@{/assets/global/css/googlefont.css}" rel="stylesheet" type="text/css" />
+    <link th:href="@{/assets/global/plugins/font-awesome/css/font-awesome.min.css}" rel="stylesheet" type="text/css" />
+    <link th:href="@{/assets/global/plugins/simple-line-icons/simple-line-icons.min.css}" rel="stylesheet" type="text/css" />
+    <link th:href="@{/assets/global/plugins/bootstrap/css/bootstrap.min.css}" rel="stylesheet" type="text/css" />
+    <link th:href="@{/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css}" rel="stylesheet" type="text/css" />
+    <!-- END GLOBAL MANDATORY STYLES -->
+    <!-- BEGIN PAGE LEVEL PLUGINS -->
+    <link th:href="@{/assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css}" rel="stylesheet" type="text/css" />
+    <!-- >> PUT PLUGINS USED HERE <<  -->
+
+    <!-- END PAGE LEVEL PLUGINS -->
+    <!-- BEGIN THEME GLOBAL STYLES -->
+    <link th:href="@{/assets/global/css/components-rounded.min.css}" rel="stylesheet" id="style_components" type="text/css" />
+    <link th:href="@{/assets/global/css/plugins.min.css}" rel="stylesheet" type="text/css" />
+    <!-- END THEME GLOBAL STYLES -->
+    <!-- BEGIN PAGE LEVEL STYLES -->
+    <!-- >> PUT YOUR CUSTOM CSS HERE IF ANY<<  -->
+    <!-- END PAGE LEVEL STYLES -->
+    <!-- BEGIN THEME LAYOUT STYLES -->
+    <link th:href="@{/assets/layouts/layout/css/layout.min.css}" rel="stylesheet" />
+    <link th:href="@{/assets/layouts/layout/css/themes/darkblue.min.css}" rel="stylesheet" />
+    <link th:href="@{/assets/layouts/layout/css/custom.min.css}" rel="stylesheet" />
+    <!-- END THEME LAYOUT STYLES -->
+
+    <link rel="shortcut icon" href="favicon.ico" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#assetCatDropdown').on('change.states', function() {
+                if (this.value == "Normal") {
+                    $("#assetDropdown").show();
+                }
+                else {
+                    $("#assetDropdown").hide();
+                }
+
+                if(this.value == "RS") {
+                    $("#rsDropdown").show();
+                } else {
+                    $("#rsDropdown").hide();
+                }
+
+            }).trigger('change.states');
+        });
+    </script>
+</head>
+<!-- END HEAD -->
+
+
+<body class="page-header-fixed page-sidebar-closed-hide-logo page-content-white">
+<div class="page-wrapper">
+    <!-- BEGIN HEADER -->
+    <div class="page-header navbar navbar-fixed-top">
+        <!-- BEGIN HEADER INNER -->
+        <div class="page-header-inner ">
+
+            <!-- BEGIN LOGO -->
+            <div th:replace="header :: logo"> </div>
+            <!-- END LOGO -->
+
+            <!-- BEGIN RESPONSIVE MENU TOGGLER -->
+            <div th:replace="header :: responsivemenu"> </div>
+            <!-- END RESPONSIVE MENU TOGGLER -->
+
+            <!-- BEGIN TOP NAVIGATION MENU -->
+            <div class="top-menu">
+                <ul class="nav navbar-nav pull-right">
+                    <li th:replace="header :: homebutton"> </li>
+                    <li class="dropdown dropdown-user">
+                        <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                            <span th:text="${name.Staff.Name}" class="username username-hide-on-mobile"> KodeKode </span>
+                            <i class="fa fa-angle-down"></i>
+                        </a>
+                        <ul th:replace="header :: usernamedropdown"> </ul>
+                    </li>
+                </ul>
+            </div>
+            <!-- END TOP NAVIGATION MENU -->
+        </div>
+        <!-- END HEADER INNER -->
+    </div>
+    <!-- END HEADER -->
+
+    <!-- BEGIN HEADER & CONTENT DIVIDER -->
+    <div class="clearfix"> </div>
+    <!-- END HEADER & CONTENT DIVIDER -->
+
+    <!-- BEGIN CONTAINER -->
+    <div class="page-container">
+
+        <!-- BEGIN SIDEBAR -->
+        <div th:replace="sider :: sidebar"> </div>
+        <!-- END SIDEBAR -->
+
+
+
+        <!-- =====NOTE========NOTE===== CONTENT BEGINS HERE!!! =====NOTE========NOTE===== -->
+
+        <!-- BEGIN CONTENT BODY -->
+        <div class="page-content-wrapper">
+            <div class="page-content">
+
+                <!-- BEGIN PAGE HEADER-->
+                <div class="page-bar">
+                    <ul class="page-breadcrumb">
+                        <li>
+                            <a th:href="index">Home</a>
+                            <i class="fa fa-circle"></i>
+                        </li>
+                        <li>
+                            <a th:href="maintreq-viewall">Maintenance Requests</a>
+                            <i class="fa fa-circle"></i>
+                        </li>
+                        <li>
+                            <span>File New Request</span>
+                        </li>
+                    </ul>
+                </div>
+                <!-- END PAGE HEADER-->
+
+                <p></p>
+
+                <!-- !!! note === note === START OF YOUR CONTENT === note === note !!! -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <!-- BEGIN VALIDATION STATES-->
+                        <div class="portlet light portlet-fit portlet-form bordered">
+                            <div class="portlet-title">
+                                <div class="caption">
+                                    <i class="fa fa-pencil-square-o font-blue"></i>
+                                    <span class="caption-subject font-blue bold uppercase">New Maintenance Request</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="portlet-body">
+                            <!-- BEGIN FORM-->
+                            <form action="maintreq-addnew.html" method="POST" id="maintreq_addnew_form" class="form-horizontal">
+                                <div class="form-body">
+                                    <div class="alert alert-danger display-hide">
+                                        <button class="close" data-close="alert"></button> You have some form errors. Please check below. </div>
+                                    <div class="alert alert-success display-hide">
+                                        <button class="close" data-close="alert"></button> Your form validation is successful! </div>
+
+                                    <div class="form-group  margin-top-20">
+                                        <label class="control-label col-md-3">Type
+                                        </label>
+                                        <div class="col-md-4">
+                                            <select class="form-control" id="typeDropdown" th:name="mainreq_type">
+                                                <option value = " ">Select Type</option>
+                                                <option value = "Ad-hoc">Ad-Hoc</option>
+                                                <option value = "Urgent">Urgent</option>
+                                                <option value = "Preventive">Preventive</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group  margin-top-20">
+                                        <label class="control-label col-md-3">Request Description
+                                        </label>
+                                        <div class="col-md-4">
+                                            <div class="input-icon right">
+                                                <i class="fa"></i>
+                                                <textarea class="form-control" rows="10" cols="50" id="rfp_desc" placeholder="Optional" th:name="mainreq_desc"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group  margin-top-20">
+                                        <label class="control-label col-md-3">Asset Category
+                                        </label>
+                                        <div class="col-md-4">
+                                            <select class="form-control" id="assetCatDropdown" th:name="mainreq_assetcat">
+                                                <option value="">Select Asset Category</option>
+                                                <option value="Normal">Normal</option>
+                                                <option value="RS">RollingStock</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group  margin-top-20" id="assetDropdown" style="display :none">
+                                        <label class="control-label col-md-3">Asset
+                                        </label>
+                                        <div class="col-md-4">
+                                            <select class="form-control" th:name="mainreq_asset">
+                                                <option value="">Select Asset</option>
+                                                <option th:each="a:${assets}" th:if="${a.status != -1 AND a.maintainStatus != 1}" th:text="${a.assetSerialID+ '-' +a.name}" th:value="${a.assetSerialID}"></option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group  margin-top-20" id="rsDropdown"  style="display :none">
+                                        <label class="control-label col-md-3">Rolling Stock
+                                        </label>
+                                        <div class="col-md-4">
+                                            <select class="form-control" th:name="mainreq_rs">
+                                                <option value="">Select Rolling Stock</option>
+                                                <option th:each="a:${rs}" th:if="${a.status != -1 AND a.status != 3}" th:text="${a.serialNo+ '-' +a.type}" th:value="${a.serialNo}"></option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-actions">
+                                        <div class="row">
+                                            <div class="col-md-offset-3 col-md-9">
+                                                <button type="submit" class="btn green" onclick="return confirm('Confirm Submit?');">Add</button>
+                                                <a th:href="@{/maintreq-viewall}">
+                                                <button type="button" class="btn default" onclick="return confirm('Are you sure?');">Cancel</button>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- !!! note === note === END OF YOUR CONTENT === note === note !!! -->
+
+            </div>
+        </div>
+        <!-- END CONTENT BODY-->
+    </div>
+    <!-- END CONTAINER -->
+
+    <!-- BEGIN FOOTER -->
+    <div th:replace = "footer :: footerbar"> </div>
+    <!-- END FOOTER -->
+
+</div>
+
+
+
+<!-- BEGIN CORE PLUGINS -->
+<script th:src="@{/assets/global/plugins/jquery.min.js}" type="text/javascript"></script>
+<script th:src="@{/assets/global/plugins/bootstrap/js/bootstrap.min.js}" type="text/javascript"></script>
+<script th:src="@{/assets/global/plugins/js.cookie.min.js}" type="text/javascript"></script>
+<script th:src="@{/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js}" type="text/javascript"></script>
+<script th:src="@{/assets/global/plugins/jquery.blockui.min.js}" type="text/javascript"></script>
+<script th:src="@{/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js}" type="text/javascript"></script>
+<!-- END CORE PLUGINS -->
+<!-- BEGIN PAGE LEVEL PLUGINS -->
+<script th:src="@{/assets/global/plugins/jquery-validation/js/jquery.validate.min.js}" type="text/javascript"></script>
+<script th:src="@{/assets/global/plugins/jquery-validation/js/additional-methods.min.js}" type="text/javascript"></script>
+<script th:src="@{/assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js}" type="text/javascript"></script>
+
+<!-- >> PUT ANY PLUGINS USED HERE <<  -->
+
+<!-- END PAGE LEVEL PLUGINS -->
+<!-- BEGIN THEME GLOBAL SCRIPTS -->
+<script th:src="@{/assets/global/scripts/app.min.js}" type="text/javascript"></script>
+<!-- END THEME GLOBAL SCRIPTS -->
+<!-- BEGIN PAGE LEVEL SCRIPTS -->
+<script th:src="@{/assets/pages/scripts/maintreq-addnew.js}" type="text/javascript"></script>
+<!-- >> PUT YOUR CUSTOM SCRIPT HERE <<  -->
+
+<!-- END PAGE LEVEL SCRIPTS -->
+<!-- BEGIN THEME LAYOUT SCRIPTS -->
+<script th:src="@{/assets/layouts/layout/scripts/layout.min.js}" type="text/javascript"></script>
+<!-- END THEME LAYOUT SCRIPTS -->
+<script>
+    $(document).ready(function()
+    {
+        $('#clickmewow').click(function()
+        {
+            $('#radio1003').attr('checked', 'checked');
+        });
+    })
+</script>
+</body>
+
+</html>

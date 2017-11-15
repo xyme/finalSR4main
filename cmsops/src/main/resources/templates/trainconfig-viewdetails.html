@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<!-- COMMON BASE PAGE -->
+
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+
+<!-- BEGIN HEAD -->
+<head>
+    <meta charset="utf-8" />
+    <title>Train Details</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta content="" name="kodekode" />
+    <link th:href="@{/assets/global/css/googlefont.css}" rel="stylesheet" type="text/css" />
+    <link th:href="@{/assets/global/plugins/font-awesome/css/font-awesome.min.css}" rel="stylesheet" type="text/css" />
+    <link th:href="@{/assets/global/plugins/simple-line-icons/simple-line-icons.min.css}" rel="stylesheet" type="text/css" />
+    <link th:href="@{/assets/global/plugins/bootstrap/css/bootstrap.min.css}" rel="stylesheet" type="text/css" />
+    <link th:href="@{/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css}" rel="stylesheet" type="text/css" />
+    <!-- END GLOBAL MANDATORY STYLES -->
+    <!-- BEGIN PAGE LEVEL PLUGINS -->
+
+    <!-- >> PUT PLUGINS USED HERE <<  -->
+
+    <!-- END PAGE LEVEL PLUGINS -->
+    <!-- BEGIN THEME GLOBAL STYLES -->
+    <link th:href="@{/assets/global/css/components-rounded.min.css}" rel="stylesheet" id="style_components" type="text/css" />
+    <link th:href="@{/assets/global/css/plugins.min.css}" rel="stylesheet" type="text/css" />
+    <!-- END THEME GLOBAL STYLES -->
+    <!-- BEGIN PAGE LEVEL STYLES -->
+    <!-- >> PUT YOUR CUSTOM CSS HERE IF ANY<<  -->
+    <!-- END PAGE LEVEL STYLES -->
+    <!-- BEGIN THEME LAYOUT STYLES -->
+    <link th:href="@{/assets/layouts/layout/css/layout.min.css}" rel="stylesheet" />
+    <link th:href="@{/assets/layouts/layout/css/themes/darkblue.min.css}" rel="stylesheet" />
+    <link th:href="@{/assets/layouts/layout/css/custom.min.css}" rel="stylesheet" />
+    <!-- END THEME LAYOUT STYLES -->
+
+    <link rel="shortcut icon" href="favicon.ico" />
+
+</head>
+<!-- END HEAD -->
+
+
+<body class="page-header-fixed page-sidebar-closed-hide-logo page-content-white">
+<div class="page-wrapper">
+    <!-- BEGIN HEADER -->
+    <div class="page-header navbar navbar-fixed-top">
+        <!-- BEGIN HEADER INNER -->
+        <div class="page-header-inner ">
+
+            <!-- BEGIN LOGO -->
+            <div th:replace="header :: logo"> </div>
+            <!-- END LOGO -->
+
+            <!-- BEGIN RESPONSIVE MENU TOGGLER -->
+            <div th:replace="header :: responsivemenu"> </div>
+            <!-- END RESPONSIVE MENU TOGGLER -->
+
+            <!-- BEGIN TOP NAVIGATION MENU -->
+            <div class="top-menu">
+                <ul class="nav navbar-nav pull-right">
+                    <li th:replace="header :: homebutton"> </li>
+                    <li class="dropdown dropdown-user">
+                        <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                            <span th:text="${name.Staff.Name}" class="username username-hide-on-mobile"> KodeKode </span>
+                            <i class="fa fa-angle-down"></i>
+                        </a>
+                        <ul th:replace="header :: usernamedropdown"> </ul>
+                    </li>
+                </ul>
+            </div>
+            <!-- END TOP NAVIGATION MENU -->
+        </div>
+        <!-- END HEADER INNER -->
+    </div>
+    <!-- END HEADER -->
+
+    <!-- BEGIN HEADER & CONTENT DIVIDER -->
+    <div class="clearfix"> </div>
+    <!-- END HEADER & CONTENT DIVIDER -->
+
+    <!-- BEGIN CONTAINER -->
+    <div class="page-container">
+
+        <!-- BEGIN SIDEBAR -->
+        <div th:replace="sider :: sidebar"> </div>
+        <!-- END SIDEBAR -->
+
+
+
+        <!-- =====NOTE========NOTE===== CONTENT BEGINS HERE!!! =====NOTE========NOTE===== -->
+
+        <!-- BEGIN CONTENT BODY -->
+        <div class="page-content-wrapper">
+            <div class="page-content">
+
+                <!-- BEGIN PAGE HEADER-->
+                <div class="page-bar">
+                    <ul class="page-breadcrumb">
+                        <li>
+                            <a th:href="index">Home</a>
+                            <i class="fa fa-circle"></i>
+                        </li>
+                        <li>
+                            <a th:href="trainconfig-viewall">Train Configurations</a>
+                            <i class="fa fa-circle"></i>
+                        </li>
+                        <li>
+                            <span>View Details</span>
+                        </li>
+                    </ul>
+                </div>
+                <!-- END PAGE HEADER-->
+
+                <p></p>
+
+                <!-- !!! note === note === START OF YOUR CONTENT === note === note !!! -->
+                <div class="portlet light portlet-fit bordered">
+                    <div class="portlet-title">
+                        <div class="caption">
+                            <i class="icon-settings font-dark"></i>
+                            <span id="train_details_table" class="caption-subject font-dark sbold uppercase"> Train Details</span>
+                        </div>
+
+                        <div class="actions" th:if="${t.status != -1 AND name.userGroup.equalsIgnoreCase('Manager')}">
+                            <div class="col-md-6">
+                                <div class="btn-group">
+                                    <a th:href="@{/trainconfig-editdetails(trainID=${t.trainId})}">
+                                        <button id="trainconfig_edit_button" class="btn blue">Edit</button>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-6" >
+                                <div class="btn-group">
+                                    <a th:href="@{/trainconfig-delete(trainID=${t.trainId})}">
+                                        <button id="trainconfig_delete_button" class="btn red" onclick="return confirm(\'Delete this train?\')">
+                                            Delete
+                                        </button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="portlet-body">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <table id="train_viewdetails_table" class="table table-bordered table-striped">
+                                    <tbody>
+                                    <tr>
+                                        <td style="width:15%"> Train ID </td>
+                                        <td style="width:35%">
+                                            <span id="train_id" class="text-muted" th:text="${t.trainId}"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td> Type </td>
+                                        <td>
+                                            <span id="train_type" class="text-muted" th:text="${t.type}"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td> Date Created </td>
+                                        <td>
+                                            <span id="train_dateCreate" class="text-muted" th:text="${t.dateCreated}"></span>
+                                        </td>
+                                    </tr>
+                                    <tr th:if="${t.dateRemoved}">
+                                        <td> Date Removed </td>
+                                        <td>
+                                            <span id="train_dateRemove" class="text-muted" th:text="${t.dateRemoved}"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td> Depot </td>
+                                        <td>
+                                            <span id="train_depot" class="text-muted" th:text="${t.parkDepot.depotID}"></span>
+                                        </td>
+                                    </tr>
+                                    <tr th:if="${t.type.equalsIgnoreCase('THIN')}">
+                                        <td> Rolling Stock (DT-MT-DT) </td>
+                                        <td th:if="${rs}">
+                                            <span id="train_rolling" class="text-muted" th:each="rs, iterStat:${rs}" th:text="!${iterStat.last} ? ${rs.serialNo}+ '-' :${rs.serialNo}">
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr th:if="${t.type.equalsIgnoreCase('THIN')}">
+                                        <td> Rolling Stock Status (DT-MT-DT) </td>
+                                        <td th:if="${rs}">
+                                            <span id="train_rollingstatus" class="text-muted" th:each="s, iterStat:${rsStatus}" th:text="!${iterStat.last} ? ${s}+ '-' :${s}">
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr th:if="${t.type.equalsIgnoreCase('FAT')}">
+                                        <td> Rolling Stock (DT-MT-MT-MT-DT)</td>
+                                        <td th:if="${rs}">
+                                            <span id="train_rolling" class="text-muted" th:each="rs, iterStat:${rs}"  th:text="!${iterStat.last} ? ${rs.serialNo}+ '-' :${rs.serialNo}">
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr th:if="${t.type.equalsIgnoreCase('FAT')}">
+                                        <td> Rolling Stock Status (DT-MT-MT-MT-DT)</td>
+                                        <td th:if="${rs}">
+                                            <span id="train_rollingstatus" class="text-muted" th:each="s, iterStat:${rsStatus}" th:text="!${iterStat.last} ? ${s}+ '-' :${s}">
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td> Status </td>
+                                        <td th:switch="${t.status}">
+                                            <span id="t_status" class="text-muted" th:case="-1">Decommissioned</span>
+                                            <span id="t_status" class="text-muted" th:case="0">Non-Operational</span>
+                                            <span id="t_status" class="text-muted" th:case="1">Operational</span>
+                                            <span id="t_status" class="text-muted" th:case="2">Maintenance</span>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- !!! note === note === END OF YOUR CONTENT === note === note !!! -->
+            </div>
+        </div>
+        <!-- END CONTENT BODY-->
+    </div>
+    <!-- END CONTAINER -->
+
+    <!-- BEGIN FOOTER -->
+    <div th:replace = "footer :: footerbar"> </div>
+    <!-- END FOOTER -->
+
+</div>
+
+
+
+<!-- BEGIN CORE PLUGINS -->
+<script th:src="@{/assets/global/plugins/jquery.min.js}" type="text/javascript"></script>
+<script th:src="@{/assets/global/plugins/bootstrap/js/bootstrap.min.js}" type="text/javascript"></script>
+<script th:src="@{/assets/global/plugins/js.cookie.min.js}" type="text/javascript"></script>
+<script th:src="@{/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js}" type="text/javascript"></script>
+<script th:src="@{/assets/global/plugins/jquery.blockui.min.js}" type="text/javascript"></script>
+<script th:src="@{/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js}" type="text/javascript"></script>
+<!-- END CORE PLUGINS -->
+<!-- BEGIN PAGE LEVEL PLUGINS -->
+
+<!-- >> PUT ANY PLUGINS USED HERE <<  -->
+
+<!-- END PAGE LEVEL PLUGINS -->
+<!-- BEGIN THEME GLOBAL SCRIPTS -->
+<script th:src="@{/assets/global/scripts/app.min.js}" type="text/javascript"></script>
+<!-- END THEME GLOBAL SCRIPTS -->
+<!-- BEGIN PAGE LEVEL SCRIPTS -->
+
+<!-- >> PUT YOUR CUSTOM SCRIPT HERE <<  -->
+
+<!-- END PAGE LEVEL SCRIPTS -->
+<!-- BEGIN THEME LAYOUT SCRIPTS -->
+<script th:src="@{/assets/layouts/layout/scripts/layout.min.js}" type="text/javascript"></script>
+<!-- END THEME LAYOUT SCRIPTS -->
+<script>
+    $(document).ready(function()
+    {
+        $('#clickmewow').click(function()
+        {
+            $('#radio1003').attr('checked', 'checked');
+        });
+    })
+</script>
+</body>
+
+</html>

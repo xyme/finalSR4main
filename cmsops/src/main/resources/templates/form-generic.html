@@ -1,0 +1,1218 @@
+<!DOCTYPE html>
+<!-- COMMON BASE PAGE -->
+
+
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+    <!--<![endif]-->
+    <!-- BEGIN HEAD -->
+
+    <head>
+        <meta charset="utf-8" />
+        <title>Home Page | Generic form</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta content="width=device-width, initial-scale=1" name="viewport" />
+        <meta content="" name="author" />
+        <!-- BEGIN GLOBAL MANDATORY STYLES -->
+        <link href="../assets/global/css/googlefont.css" rel="stylesheet" type="text/css" />
+        <!--<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />-->
+        <link href="../assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+        <link href="../assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
+        <link href="../assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="../assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css" />
+        <!-- END GLOBAL MANDATORY STYLES -->
+        <!-- BEGIN PAGE LEVEL PLUGINS -->
+        <link href="../assets/global/plugins/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
+        <link href="../assets/global/plugins/select2/css/select2-bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="../assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet" type="text/css" />
+        <link href="../assets/global/plugins/bootstrap-wysihtml5/bootstrap-wysihtml5.css" rel="stylesheet" type="text/css" />
+        <link href="../assets/global/plugins/bootstrap-markdown/css/bootstrap-markdown.min.css" rel="stylesheet" type="text/css" />
+        <!-- END PAGE LEVEL PLUGINS -->
+        <!-- BEGIN THEME GLOBAL STYLES -->
+        <link href="../assets/global/css/components-rounded.min.css" rel="stylesheet" id="style_components" type="text/css" />
+        <link href="../assets/global/css/plugins.min.css" rel="stylesheet" type="text/css" />
+        <!-- END THEME GLOBAL STYLES -->
+
+        <!-- BEGIN THEME LAYOUT STYLES -->
+        <link href="../assets/layouts/layout/css/layout.min.css" rel="stylesheet" type="text/css" />
+        <link href="../assets/layouts/layout/css/themes/darkblue.min.css" rel=stylesheet type="text/css" id="style_color" />
+        <link href="../assets/layouts/layout/css/custom.min.css" rel="stylesheet" type="text/css" />
+        <!-- END THEME LAYOUT STYLES -->
+
+        <link rel="shortcut icon" href="favicon.ico" /> </head>
+    <!-- END HEAD -->
+
+    <body class="page-header-fixed page-sidebar-closed-hide-logo page-content-white">
+        <div class="page-wrapper">
+            <!-- BEGIN HEADER -->
+            <div class="page-header navbar navbar-fixed-top">
+                <!-- BEGIN HEADER INNER -->
+                <div class="page-header-inner ">
+                    <!-- BEGIN LOGO -->
+                    <div class="page-logo">
+                        <a href="index.html">
+                            <img src="../assets/layouts/layout/img/logo.png" alt="logo" class="logo-default" /> </a>
+                        <div class="menu-toggler sidebar-toggler">
+                            <span></span>
+                        </div>
+                    </div>
+                    <!-- END LOGO -->
+                    <!-- BEGIN RESPONSIVE MENU TOGGLER -->
+                    <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span></span>
+                    </a>
+                    <!-- END RESPONSIVE MENU TOGGLER -->
+                    <!-- BEGIN TOP NAVIGATION MENU -->
+                    <div class="top-menu">
+                        <ul class="nav navbar-nav pull-right">
+                            <!-- BEGIN NOTIFICATION DROPDOWN -->
+                            <!-- DOC: Apply "dropdown-dark" class after "dropdown-extended" to change the dropdown styte -->
+                            <!-- DOC: Apply "dropdown-hoverable" class after below "dropdown" and remove data-toggle="dropdown" data-hover="dropdown" data-close-others="true" attributes to enable hover dropdown mode -->
+                            <!-- DOC: Remove "dropdown-hoverable" and add data-toggle="dropdown" data-hover="dropdown" data-close-others="true" attributes to the below A element with dropdown-toggle class -->
+                            <li class="dropdown dropdown-extended dropdown-notification" id="header_notification_bar">
+                                <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                                    <i class="icon-bell"></i>
+                                    <span class="badge badge-default" id="notificationsBadge"> ? </span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li class="external">
+                                        <h3>
+                                            <span class="bold" id="pendingNotifications">? pending</span> notifications</h3>
+                                        <a href="page_user_profile_1.html">view all</a>
+                                    </li>
+                                    <li>
+                                        <ul class="dropdown-menu-list scroller" style="height: 250px;" data-handle-color="#637283" id="allNotifications">
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <!-- END NOTIFICATION DROPDOWN -->
+
+                            <!-- BEGIN INBOX DROPDOWN -->
+                            <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
+                            <li class="dropdown dropdown-extended dropdown-inbox" id="header_inbox_bar">
+                                <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                                    <i class="icon-envelope-open"></i>
+                                    <span class="badge badge-default" id='newMsgesCountBadge'> ? </span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li class="external">
+                                        <h3>You have
+                                            <span id='msgCount' class="bold" >? New</span> Messages
+                                        </h3>
+                                        <a href="app_inbox.html">view all</a>
+                                    </li>
+                                    <li>
+                                        <ul class="dropdown-menu-list scroller" style="height: 275px;" data-handle-color="#637283" id='msgesPreviews'>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <!-- END INBOX DROPDOWN -->
+
+
+                            <!-- BEGIN USER LOGIN DROPDOWN -->
+                            <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
+                            <li class="dropdown dropdown-user">
+                                <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+
+                                    <!-- NOTENOTE: Change profile pic-->
+                                    <img id="profilePic" alt="" class="img-circle" src="../assets/layouts/layout/img/dora.png" />
+                                    <span id="username" class="username username-hide-on-mobile"> USER'S NAME HERE </span>
+                                    <i class="fa fa-angle-down"></i>
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-default">
+                                    <li>
+                                        <a href="page_user_profile_1.html">
+                                            <i class="icon-user"></i> My Profile </a>
+                                    </li>
+                                    <li>
+                                        <a href="app_calendar.html">
+                                            <i class="icon-calendar"></i> My Calendar </a>
+                                    </li>
+                                    <li>
+                                        <a href="app_inbox.html">
+                                            <i class="icon-envelope-open"></i> My Inbox
+                                            <span class="badge badge-danger" id="myInbox"> ? </span>
+                                        </a>
+                                    </li>
+                                    <li class="divider"> </li>
+                                    <li>
+                                        <a href="login.html">
+                                            <i class="icon-key"></i> Log Out </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <!-- END USER LOGIN DROPDOWN -->
+                        </ul>
+                    </div>
+                    <!-- END TOP NAVIGATION MENU -->
+                </div>
+                <!-- END HEADER INNER -->
+            </div>
+            <!-- END HEADER -->
+            <!-- BEGIN HEADER & CONTENT DIVIDER -->
+            <div class="clearfix"> </div>
+            <!-- END HEADER & CONTENT DIVIDER -->
+            <!-- BEGIN CONTAINER -->
+            <div class="page-container">
+                <!-- BEGIN SIDEBAR -->
+                <div class="page-sidebar-wrapper">
+                    <!-- BEGIN SIDEBAR -->
+                    <!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
+                    <!-- DOC: Change data-auto-speed="200" to adjust the sub menu slide up/down speed -->
+                    <div class="page-sidebar navbar-collapse collapse">
+                        <!-- BEGIN SIDEBAR MENU -->
+                        <!-- DOC: Apply "page-sidebar-menu-light" class right after "page-sidebar-menu" to enable light sidebar menu style(without borders) -->
+                        <!-- DOC: Apply "page-sidebar-menu-hover-submenu" class right after "page-sidebar-menu" to enable hoverable(hover vs accordion) sub menu mode -->
+                        <!-- DOC: Apply "page-sidebar-menu-closed" class right after "page-sidebar-menu" to collapse("page-sidebar-closed" class must be applied to the body element) the sidebar sub menu mode -->
+                        <!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
+                        <!-- DOC: Set data-keep-expand="true" to keep the submenues expanded -->
+                        <!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
+                        <ul class="page-sidebar-menu  page-sidebar-menu-light page-sidebar-menu-hover-submenu  page-header-fixed " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200" style="padding-top: 20px">
+                            <!-- DOC: To remove the sidebar toggler from the sidebar you just need to completely remove the below "sidebar-toggler-wrapper" LI element -->
+                            <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+                            <li class="sidebar-toggler-wrapper hide">
+                                <div class="sidebar-toggler">
+                                    <span></span>
+                                </div>
+                            </li>
+                            <!-- END SIDEBAR TOGGLER BUTTON -->
+
+                            <li class="heading">
+                                <h3 style="color:yellow" class="uppercase">My Workspace</h3>
+                            </li>
+
+                            <!--My Roster-->
+                            <li class="nav-item ">
+                                <a href=# class="nav-link " id="rosterMenu">
+                                    <i class="fa fa-building-o"></i>
+                                    <span class="title">My Roster</span>
+                                </a>
+                            </li>
+
+                            <!--Train Management Menu-->
+                            <li class="nav-item ">
+                                <a href="javascript:;" class="nav-link nav-toggle" id="trainsMgmtMenu">
+                                    <i class="fa fa-subway"></i>
+                                    <span class="title">Trains Management</span>
+                                    <span class="arrow"></span>
+                                </a>
+                                <ul class="sub-menu">
+                                    <li class="nav-item start " id="timetableSubmenu">
+                                        <a href=# class="nav-link ">
+                                            <i class="fa fa-calendar"></i>
+                                            <span class="title">View Timetable</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item start " id="trainRouteAssignSubmenu">
+                                        <a href=# class="nav-link ">
+                                            <i class="fa fa-map-o"></i>
+                                            <span class="title">Train-Route Assignment</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item start " id="trainConfigSubmenu">
+                                        <a href=# class="nav-link ">
+                                            <i class="fa fa-gears"></i>
+                                            <span class="title">Train Configuration</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item start " id="liveStatusSubmenu">
+                                        <a href=# class="nav-link ">
+                                            <i class="fa fa-flash"></i>
+                                            <span class="title">Live Status</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <!--Inventory & Asset Management-->
+                            <li class="nav-item  ">
+                                <a href="javascript:;" class="nav-link nav-toggle" id="inventAssetInfraMenu">
+                                    <i class="fa fa-cubes"></i>
+                                    <span class="title">Inventory, Asset and Infrastructure</span>
+                                    <span class="arrow"></span>
+                                </a>
+                                <ul class="sub-menu">
+                                    <li class="nav-item  ">
+                                        <a href="javascript:;" class="nav-link nav-toggle" id="inventoryMgmtSubmenu">
+                                            <i class="fa fa-cube"></i>
+                                            <span class="title">Inventory Management</span>
+                                            <span class="arrow"></span>
+                                        </a>
+                                            <ul class="sub-menu">
+                                                <li class="nav-item " id="requestItemsSubsubmenu">
+                                                    <a href=# class="nav-link "><i class="fa fa-plus-square"></i>
+                                                        <span class="title">Request Items</a></span>
+                                                </li>
+                                            </ul>
+                                    </li>
+                                    <li class="nav-item " id="assetSubmenu">
+                                        <a href=# class="nav-link ">
+                                            <i class="fa fa-tags"></i>
+                                            <span class="title">Asset Management</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item " id="dispatchItemsSubmenu">
+                                        <a href=# class="nav-link ">
+                                            <i class="fa fa-truck"></i>
+                                            <span class="title">Dispatch Items</span>
+                                        </a>
+                                    </li>
+                                    
+                                    <li class="nav-item " id="dispatchItemsSubmenu">
+                                        <a href=# class="nav-link ">
+                                            <i class="fa fa-university"></i>
+                                            <span class="title">Infrastructure Management</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item " id="procurementSubmenu">
+                                        <a href=# class="nav-link ">
+                                            <i class="fa fa-shopping-cart"></i>
+                                            <span class="title">Procurement</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>   
+
+                            <!--Maintenance Management-->
+                            <li class="nav-item ">
+                                <a href="javascript:;" class="nav-link nav-toggle" id="maintainMgmtMenu">
+                                    <i class="fa fa-wrench"></i>
+                                    <span class="title">Maintenance</span>
+                                    <span class="arrow"></span>
+                                </a>
+                                <ul class="sub-menu">
+
+                                    <li class="nav-item  ">
+                                        <a href="javascript:;" class="nav-link nav-toggle" id="maintainRequestSubmenu">
+                                            <i class="fa fa-sticky-note-o"></i>
+                                            <span class="title">Maintenance Request</span>
+                                            <span class="arrow"></span>
+                                        </a>
+                                            <ul class="sub-menu">
+                                                <li class="nav-item " id="newMaintainRequestSubsubmenu">
+                                                    <a href=# class="nav-link "><i class="fa fa-plus-square"></i>
+                                                        <span class="title">New Request</a></span>
+                                                </li>
+                                                <li class="nav-item " id="viewAllMaintainRequestsSubsubmenu">
+                                                    <a href=# class="nav-link "><i class="fa fa-eye"></i>
+                                                        <span class="title"> View All Requests</a></span>
+                                                </li>
+                                            </ul>
+                                    </li>
+                                    <li class="nav-item " id="schedulingSubmenu">
+                                        <a href=# class="nav-link ">
+                                            <i class="fa fa-calendar-plus-o"></i>
+                                            <span class="title">Scheduling</span>
+                                        </a>
+                                    </li>
+
+                                    <li class="nav-item  ">
+                                        <a href="javascript:;" class="nav-link nav-toggle" id="reportingSubmenu">
+                                            <i class="fa fa-file-text-o"></i>
+                                            <span class="title">Reporting</span>
+                                            <span class="arrow"></span>
+                                        </a>
+                                            <ul class="sub-menu">
+                                                <li class="nav-item  ">
+                                                    <a href="javascript:;" class="nav-link nav-toggle" id="inspectionReportSubsubmenu">
+                                                        <i class="fa fa-gear"></i>
+                                                        <span class="title">Inspection Report</span>
+                                                        <span class="arrow"></span>
+                                                    </a>
+                                                <ul class="sub-menu">
+                                                    <li class="nav-item " id="newInspectionReportSubsubsubmenu">
+                                                        <a href=# class="nav-link "><i class="fa fa-plus-square"></i>
+                                                            <span class="title">New Inspection Report</a></span>
+                                                    </li>
+                                                    <li class="nav-item " id="viewAllInspectionReportSubsubsubmenu">
+                                                        <a href=# class="nav-link "><i class="fa fa-eye"></i>
+                                                            <span class="title">View All Inspection Report</a></span>
+                                                    </li>
+                                                </ul>
+                                            
+                                                <li class="nav-item  ">
+                                                    <a href="javascript:;" class="nav-link nav-toggle" id="maintenanceReportSubsubmenu">
+                                                        <i class="fa fa-gavel"></i>
+                                                        <span class="title">Maintenance Report</span>
+                                                        <span class="arrow"></span>
+                                                    </a>
+                                                <ul class="sub-menu">
+                                                    <li class="nav-item " id="newMaintenanceReportSubsubsubmenu">
+                                                        <a href=# class="nav-link "><i class="fa fa-plus-square"></i>
+                                                            <span class="title">New Maintenance Report</a></span>
+                                                    </li>
+                                                    <li class="nav-item " id="viewAllMaintenanceReportSubsubsubmenu">
+                                                        <a href=# class="nav-link "><i class="fa fa-eye"></i>
+                                                            <span class="title">View All Maintenance Report</a>
+                                                    </li>
+                                                </ul>
+                                            </ul>
+                                        </li>
+                                    <li class="nav-item " id="taskAssignSubmenu">
+                                        <a href=# class="nav-link ">
+                                            <i class="fa fa-server"></i>
+                                            <span class="title">Maintenance Task Assignment</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+
+
+                            <!--Operations Management-->
+                            <li class="nav-item  ">
+                                <a href="javascript:;" class="nav-link nav-toggle" id="opsMgmtMenu">
+                                    <i class="icon-settings"></i>
+                                    <span class="title">Operations</span>
+                                    <span class="arrow"></span>
+                                </a>
+                                <ul class="sub-menu">
+                                    <li class="nav-item " id="trainLiveStatusSubmenu">
+                                        <a href=# class="nav-link ">
+                                            <i class="fa fa-flash"></i>
+                                            <span class="title">Train LiveStatus</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item " id="ticketingSubmenu">
+                                        <a href=# class="nav-link ">
+                                            <i class="fa fa-ticket"></i>
+                                            <span class="title">Ticketing Management</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item " id="driverReportSubmenu">
+                                        <a href=# class="nav-link ">
+                                            <i class="fa fa-file-text-o"></i>
+                                            <span class="title">Post-trip Driver Report</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item " id="stationReportSubmenu">
+                                        <a href=# class="nav-link ">
+                                            <i class="fa fa-file-text-o"></i>
+                                            <span class="title">Post-shift Station Report</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item " id="cashCollectionReportSubmenu">
+                                        <a href=# class="nav-link ">
+                                            <i class="fa fa-money"></i>
+                                            <span class="title">Cash Collection Accountability Report</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+
+
+                            <!--COMMUNICATIONS-->
+                            <li class="heading">
+                                <h3 style="color:yellow" class="uppercase">Communications</h3>
+                            </li>
+
+                            <!--Announcements Management-->
+                            <li class="nav-item  ">
+                                <a href=# class="nav-link " id="announcementsMenu">
+                                    <i class="fa fa-bullhorn"></i>
+                                    <span class="title">Announcements</span>
+                                </a>
+
+                            <!--Messaging Management-->
+                            <li class="nav-item  ">
+                                <a href="javascript:;" class="nav-link nav-toggle" id="messagingMenu">
+                                    <i class="fa fa-envelope-o"></i>
+                                    <span class="title">Messaging</span>
+                                    <span class="arrow"></span>
+                                </a>
+                                <ul class="sub-menu">
+                                    <li class="nav-item " id="inboxSubmenu">
+                                        <a href=# class="nav-link ">
+                                            <i class="fa fa-inbox"></i>
+                                            <span class="title">Inbox</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item  " id="sentMsgesSubmenu">
+                                        <a href=# class="nav-link ">
+                                            <i class="fa fa-envelope-square"></i>
+                                            <span class="title">Sent Messages</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <!--Live Updates Management-->
+                            <li class="nav-item  ">
+                                <a href="javascript:;" class="nav-link nav-toggle" id="liveUpdatesMenu">
+                                    <i class="fa fa-flash"></i>
+                                    <span class="title">Live Updates</span>
+                                    <span class="arrow"></span>
+                                </a>
+                                <ul class="sub-menu">
+                                    <li class="nav-item  " id="massCommSubmenu">
+                                        <a href=# class="nav-link ">
+                                            <i class="fa fa-users"></i>
+                                            <span class="title">Mass Communication</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item  " id="passengerUpdateSubmenu">
+                                        <a href=# class="nav-link ">
+                                            <i class="fa fa-user-secret"></i>
+                                            <span class="title">Passenger LiveStatus Update</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            
+                            <!--Customers Communication Management-->
+                            <li class="nav-item  ">
+                                <a href="javascript:;" class="nav-link nav-toggle" id="custCommsMenu">
+                                    <i class="fa fa-microphone"></i>
+                                    <span class="title">Customers Communications</span>
+                                    <span class="arrow"></span>
+                                </a>
+                                <ul class="sub-menu">
+                                    <li class="nav-item " id="custFeedbacksSubmenu">
+                                        <a href=# class="nav-link ">
+                                            <i class="fa fa-smile-o"></i>
+                                            <span class="title">Customers Feedbacks</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+
+
+
+                            <!--E-HR-->
+                            <li class="heading">
+                                <h3 style="color:yellow" class="uppercase">E-HR</h3>
+                            </li>
+                            
+                            <!-- My Performance Menu-->
+                            <li class="nav-item ">
+                                <a href="javascript:;" class="nav-link nav-toggle" id="performanceMenu">
+                                    <i class="fa fa-area-chart"></i>
+                                    <span class="title">My Performance</span>
+                                    <span class="arrow"></span>
+                                </a>
+                                <ul class="sub-menu">
+                                    <li class="nav-item " id="attendanceSubmenu">
+                                        <a href=# class="nav-link ">
+                                            <i class="fa fa-calendar-check-o"></i>
+                                            <span class="title">My Attendance</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item  " id="appraisalsSubmenu">
+                                        <a href=# class="nav-link ">
+                                            <i class="fa fa-check-square"></i>
+                                            <span class="title">My Appraisals</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item  " id="violationsSubmenu">
+                                        <a href=# class="nav-link ">
+                                            <i class="fa fa-frown-o"></i>
+                                            <span class="title">My Violations Records</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <!-- My Development Menu-->
+                            <li class="nav-item ">
+                                <a href="javascript:;" class="nav-link nav-toggle" id="developmentMenu">
+                                    <i class="icon-layers"></i>
+                                    <span class="title">My Development</span>
+                                    <span class="arrow"></span>
+                                </a>
+                                <ul class="sub-menu">
+                                    <li class="nav-item " id="newTrainingSubmenu">
+                                        <a href=# class="nav-link ">
+                                            <i class="fa fa-book"></i>
+                                            <span class="title">Available Training & Classes</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <!-- Leave Management Menu-->
+                            <li class="nav-item ">
+                                <a href=# class="nav-link " id="leaveMenu">
+                                    <i class="fa fa-leaf"></i>
+                                    <span class="title">Leave Management</span>
+                                </a>
+                            </li>
+
+                            <!--HR Mgmt Menu-->
+                            <li class="nav-item  ">
+                                <a href="javascript:;" class="nav-link nav-toggle" id="hrMgmtMenu">
+                                    <i class="fa fa-user-secret"></i>
+                                    <span class="title">HR Management</span>
+                                    <span class="arrow"></span>
+                                </a>
+                                    <ul class="sub-menu">
+                                        <li class="nav-item  " id="rosterPlanningSubmenu"">
+                                            <a href=# class="nav-link ">
+                                                <i class="fa fa-table"></i>
+                                                <span class="title">Roster Planning</span>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item  " id="accountsMgmtSubmenu"">
+                                            <a href=# class="nav-link ">
+                                                <i class="fa fa-database"></i>
+                                                <span class="title">Accounts Management</span>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item ">
+                                            <a href="javascript:;" class="nav-link nav-toggle" id="employeeMgmtSubmenu">
+                                                <i class="fa fa-briefcase"></i>
+                                                <span class="title">Employee Management</span>
+                                                <span class="arrow"></span>
+                                            </a>
+                                                <ul class="sub-menu">
+                                                    <li class="nav-item " id="employeePerformanceMgmtSubsubmenu">
+                                                        <a href=# class="nav-link ">
+                                                            <i class="fa fa-line-chart"></i>
+                                                            <span class="title">Employee Performance Management</a></span>
+                                                    </li>
+                                                    <li class="nav-item " id="employeeDevelopmentMgmtSubsubmenu">
+                                                        <a href=# class="nav-link ">
+                                                            <i class="fa fa-book"></i>
+                                                            <span class="title">Employee Development Management</a></span>
+                                                    </li>
+                                                    <li class="nav-item " id="employeeLeaveMgmtSubsubmenu">
+                                                        <a href="underconstruction.html" class="nav-link ">
+                                                            <i class="fa fa-leaf"></i>
+                                                            <span class="title">Employee Leave Management</a></span>
+                                                    </li>
+                                                </ul>
+                                        </li>
+                                    </ul>
+                            </li>
+
+
+                            <!--MY CORPORATE WORKSPACE-->
+                            <li class="heading">
+                                <h3 style="color:yellow" class="uppercase">My Corporate Workspace</h3>
+                            </li>
+                            
+                            <!--Company Performance Menu-->
+                            <li class="nav-item ">
+                                <a href=# class="nav-link " id="companyPerfMenu">
+                                    <i class="fa fa-pie-chart"></i>
+                                    <span class="title">Company Performance</span>
+                                </a>
+                            </li>
+
+                            <!-- StarFish Management Menu-->
+                            <li class="nav-item ">
+                                <a href="javascript:;" class="nav-link nav-toggle" id="starFishMgmtMenu">
+                                    <i class="fa fa-star-o"></i>
+                                    <span class="title">StarFish</span>
+                                    <span class="arrow"></span>
+                                </a>
+                                <ul class="sub-menu">
+                                    <li class="nav-item " id="pointsMgmtSubmenu">
+                                        <a href=# class="nav-link ">
+                                            <i class="fa fa-rub"></i>
+                                            <span class="title">Points Management</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item  " id="merchantMgmtSubmenu">
+                                        <a href=# class="nav-link ">
+                                            <i class="fa fa-briefcase"></i>
+                                            <span class="title">Merchants Management</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item  " id="commuterAcctMgmtSubmenu">
+                                        <a href=# class="nav-link ">
+                                            <i class="fa fa-database"></i>
+                                            <span class="title">Commuters Accounts Management</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <!-- External Company Management Menu-->
+                            <li class="nav-item ">
+                                <a href="javascript:;" class="nav-link nav-toggle" id="externalCompMgmtMenu">
+                                    <i class="fa fa-industry"></i>
+                                    <span class="title">External Companies Management</span>
+                                    <span class="arrow"></span>
+                                </a>
+                                <ul class="sub-menu">
+                                    <li class="nav-item " id="externalCompAcctMgmtSubmenu">
+                                        <a href=# class="nav-link ">
+                                            <i class="fa fa-database"></i>
+                                            <span class="title">External Company Accounts Management</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item  " id="tenderMgmtSubmenu">
+                                        <a href=# class="nav-link ">
+                                            <i class="fa fa-clone"></i>
+                                            <span class="title">Tenders Management</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item  " id="leaseMgmtSubmenu">
+                                        <a href=# class="nav-link ">
+                                            <i class="fa fa-pencil-square-o"></i>
+                                            <span class="title">Lease Management</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item  " id="adsMgmtSubmenu">
+                                        <a href=# class="nav-link ">
+                                            <i class="fa fa-picture-o"></i>
+                                            <span class="title">Ads Management</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <!-- Cost Centre Management Menu-->
+                            <li class="nav-item ">
+                                <a href=# class="nav-link nav-toggle" id="costCentreMgmtMenu">
+                                    <i class="fa fa-dollar"></i>
+                                    <span class="title">Cost Centre Management</span>
+                                </a>
+                            </li>
+
+                            <!-- Farebox Management Menu-->
+                            <li class="nav-item ">
+                                <a href=# class="nav-link nav-toggle" id="fareboxMgmtMenu">
+                                    <i class="fa fa-archive"></i>
+                                    <span class="title">Farebox Management</span>
+                                </a>
+                                <ul class="sub-menu">
+                                    <li class="nav-item " id="fareboxAdjustSubmenu">
+                                        <a href=# class="nav-link ">
+                                            <i class="fa fa-ticket"></i>
+                                            <span class="title">Farebox Adjustment</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <!-- Real Estate Management Menu-->
+                            <li class="nav-item ">
+                                <a href="javascript:;" class="nav-link nav-toggle" id="realEstateMgmtMenu">
+                                    <i class="fa fa-home"></i>
+                                    <span class="title">Real Estate Management</span>
+                                    <span class="arrow"></span>
+                                </a>
+                                <ul class="sub-menu">
+                                    <li class="nav-item " id="leaseAreasSubmenu">
+                                        <a href=# class="nav-link ">
+                                            <i class="fa fa-pencil-square-o"></i>
+                                            <span class="title">Leaseable Areas Management</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item  " id="adsSpacesSubmenu">
+                                        <a href=# class="nav-link ">
+                                            <i class="fa fa-picture-o"></i>
+                                            <span class="title">Ads Spaces Management</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <!-- Train Network Management Menu-->
+                            <li class="nav-item ">
+                                <a href="javascript:;" class="nav-link nav-toggle" id="trainNetworkMgmtMenu">
+                                    <i class="fa fa-map-signs"></i>
+                                    <span class="title">Train Network Management</span>
+                                    <span class="arrow"></span>
+                                </a>
+                                <ul class="sub-menu">
+                                    <li class="nav-item " id="networkDesignSubmenu">
+                                        <a href=# class="nav-link ">
+                                            <i class="fa fa-code-fork"></i>
+                                            <span class="title">Network Design</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item  " id="timetableDesignSubmenu">
+                                        <a href=# class="nav-link ">
+                                            <i class="fa fa-table"></i>
+                                            <span class="title">Timetable Design</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item  " id="routeDesignSubmenu">
+                                        <a href=# class="nav-link ">
+                                            <i class="fa fa-road"></i>
+                                            <span class="title">Route Design</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <!-- Audit Menu-->
+                            <li class="nav-item ">
+                                <a href="javascript:;" class="nav-link nav-toggle" id="auditMenu">
+                                    <i class="fa fa-gavel"></i>
+                                    <span class="title">Audit</span>
+                                    <span class="arrow"></span>
+                                </a>
+                                <ul class="sub-menu">
+                                    <li class="nav-item " id="auditInspectionReportsSubmenu">
+                                        <a href=# class="nav-link ">
+                                            <i class="fa fa-gear"></i>
+                                            <span class="title">Audit Inspection Reports</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item  " id="auditMaintenanceReportsSubmenu">
+                                        <a href=# class="nav-link ">
+                                            <i class="fa fa-wrench"></i>
+                                            <span class="title">Audit Maintenance Reports</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item  " id="auditPosttripsReportsSubmenu">
+                                        <a href=# class="nav-link ">
+                                            <i class="fa fa-subway"></i>
+                                            <span class="title">Audit Post-trips Reports</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item  " id="auditPostshiftsReportsSubmenu">
+                                        <a href=# class="nav-link ">
+                                            <i class="fa fa-building-o"></i>
+                                            <span class="title">Audit Post-shifts Reports</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item  " id="auditDispatchesSubmenu">
+                                        <a href=# class="nav-link ">
+                                            <i class="fa fa-truck"></i>
+                                            <span class="title">Audit Dispatches</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item  " id="auditProcurementSubmenu">
+                                        <a href=# class="nav-link ">
+                                            <i class="fa fa-shopping-cart"></i>
+                                            <span class="title">Audit Procurement</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <!-- Access Control Management Menu-->
+                            <li class="nav-item ">
+                                <a href="javascript:;" class="nav-link nav-toggle" id="acmMgmtMenu">
+                                    <i class="fa fa-tasks"></i>
+                                    <span class="title">Access Control Management</span>
+                                    <span class="arrow"></span>
+                                </a>
+                                <ul class="sub-menu">
+                                    <li class="nav-item " id="intAcctsACMSubmenu">
+                                        <a href=# class="nav-link ">
+                                            <i class="fa fa-sign-in"></i>
+                                            <span class="title">Internal Accounts ACM</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item " id="extAcctsACMSubmenu">
+                                        <a href=# class="nav-link ">
+                                            <i class="fa fa-sign-out"></i>
+                                            <span class="title">External Accounts ACM</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <!-- Accounts Management Menu-->
+                            <li class="nav-item ">
+                                <a href="javascript:;" class="nav-link nav-toggle" id="acctsMgmtMenu">
+                                    <i class="fa fa-database"></i>
+                                    <span class="title">Accounts Management</span>
+                                    <span class="arrow"></span>
+                                </a>
+                                <ul class="sub-menu">
+                                    <li class="nav-item " id="intAcctsMgmtSubmenu">
+                                        <a href=# class="nav-link ">
+                                            <i class="fa fa-sign-in"></i>
+                                            <span class="title">Internal Accounts</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item " id="extAcctsMgmtSubmenu">
+                                        <a href=# class="nav-link ">
+                                            <i class="fa fa-sign-out"></i>
+                                            <span class="title">External Accounts</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <!-- Web Contents Management Menu-->
+                            <li class="nav-item ">
+                                <a href="javascript:;" class="nav-link nav-toggle" id="webContentsMgmtMenu">
+                                    <i class="fa fa-connectdevelop"></i>
+                                    <span class="title">Web Contents Management</span>
+                                    <span class="arrow"></span>
+                                </a>
+                                <ul class="sub-menu">
+                                    <li class="nav-item " id="pagesSubmenu">
+                                        <a href=# class="nav-link ">
+                                            <i class="fa fa-clone"></i>
+                                            <span class="title">Pages</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <p></p>
+                        <!-- END SIDEBAR MENU -->
+                        <!-- END SIDEBAR MENU -->
+                    </div>
+                    <!-- END SIDEBAR -->
+                </div>
+                <!-- END SIDEBAR -->
+                <!-- BEGIN CONTENT -->
+                <div class="page-content-wrapper">
+                    <!-- BEGIN CONTENT BODY -->
+                    <div class="page-content">
+                        <!-- BEGIN PAGE HEADER-->
+                        <!-- BEGIN PAGE BAR -->
+                        <div class="page-bar">
+                            <ul class="page-breadcrumb">
+                                <li>
+                                    <a href="index.html">Home</a>
+                                    <i class="fa fa-circle"></i>
+                                </li>
+                                <li>
+                                    <span>Generic Form (with validation)</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- END PAGE BAR -->
+                        <!-- BEGIN PAGE TITLE-->
+                        <p></p>
+                        <!-- END PAGE TITLE-->
+                        <!-- END PAGE HEADER-->
+                        <div class="row">
+                            <div class="col-md-12">
+                                <!-- BEGIN VALIDATION STATES-->
+                                <div class="portlet light portlet-fit portlet-form bordered">
+                                    <div class="portlet-title">
+                                        <div class="caption">
+                                            <i class="fa fa-pencil-square-o font-blue"></i>
+                                            <span class="caption-subject font-blue bold uppercase">Generic Validated Form</span>
+                                        </div>
+                                    </div>
+                                    <div class="portlet-body">
+                                        <!-- BEGIN FORM-->
+                                        <form action="#" id="generic_form" class="form-horizontal">
+                                            <div class="form-body">
+                                                <div class="alert alert-danger display-hide">
+                                                    <button class="close" data-close="alert"></button> You have some form errors. Please check below. </div>
+                                                <div class="alert alert-success display-hide">
+                                                    <button class="close" data-close="alert"></button> Your form validation is successful! </div>
+
+                                                <!--Name input field--> 
+                                                <div class="form-group  margin-top-20">
+                                                    <label class="control-label col-md-3">Name
+                                                        <span class="required"> * </span>
+                                                    </label>
+                                                    <div class="col-md-4">
+                                                        <div class="input-icon right">
+                                                            <i class="fa"></i>
+                                                            <input type="text" class="form-control" name="name" placeholder="Winona Tan" /> </div>
+                                                    </div>
+                                                </div>
+
+                                                <!--Email input field-->
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-3">Email
+                                                        <span class="required"> * </span>
+                                                    </label>
+                                                    <div class="col-md-4">
+                                                        <div class="input-icon right">
+                                                            <i class="fa"></i>
+                                                            <input type="text" class="form-control" name="email" /> </div>
+                                                    </div>
+                                                </div>
+
+                                                <!--URL input field-->
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-3">URL
+                                                        <span class="required"> * </span>
+                                                    </label>
+                                                    <div class="col-md-4">
+                                                        <div class="input-icon right">
+                                                            <i class="fa"></i>
+                                                            <input type="text" class="form-control" name="url" /> </div>
+                                                        <span class="help-block"> e.g: https://www.ilove8mc.com </span>
+                                                    </div>
+                                                </div>
+
+                                                <!--Short input field-->
+                                                <div class="form-group  margin-top-20">
+                                                    <label class="control-label col-md-3">Short Word
+                                                        <span class="required"> * </span>
+                                                    </label>
+                                                    <div class="col-md-4">
+                                                        <div class="input-icon right">
+                                                            <i class="fa"></i>
+                                                            <input type="text" class="form-control" name="shortword" /> </div>
+                                                    </div>
+                                                </div>
+
+                                                <!--Number input field-->
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-3">Number
+                                                        <span class="required"> * </span>
+                                                    </label>
+                                                    <div class="col-md-4">
+                                                        <div class="input-icon right">
+                                                            <i class="fa"></i>
+                                                            <input type="text" class="form-control" name="number" /> </div>
+                                                    </div>
+                                                </div>
+
+                                                <!--Digits input field-->
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-3">Digits
+                                                        <span class="required"> * </span>
+                                                    </label>
+                                                    <div class="col-md-4">
+                                                        <div class="input-icon right">
+                                                            <i class="fa"></i>
+                                                            <input type="text" class="form-control" name="digits" /> </div>
+                                                    </div>
+                                                </div>
+
+                                                <!--Datepicker field-->
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-3">Datepicker
+                                                        <span class="required"> * </span>
+                                                    </label>
+                                                    <div class="col-md-4">
+                                                        <div class="input-group date date-picker" data-date-format="dd-mm-yyyy">
+                                                            <input type="text" class="form-control" readonly name="datepicker">
+                                                            <span class="input-group-btn">
+                                                                <button class="btn default" type="button">
+                                                                    <i class="fa fa-calendar"></i>
+                                                                </button>
+                                                            </span>
+                                                        </div>
+                                                        <!-- /input-group -->
+                                                        <span class="help-block"> Select a Date </span>
+                                                    </div>
+                                                </div>
+
+                                                <!--Radio buttons field-->
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-3">Radio
+                                                        <span class="required"> * </span>
+                                                    </label>
+                                                    <div class="col-md-4">
+                                                        <div class="mt-radio-list" data-error-container="#generic_form">
+                                                            <label class="mt-radio">
+                                                                <input type="radio" name="membership" value="1" /> Button 1
+                                                                <span></span>
+                                                            </label>
+                                                            <label class="mt-radio">
+                                                                <input type="radio" name="membership" value="2" /> Button 2
+                                                                <span></span>
+                                                            </label>
+                                                            <label class="mt-radio">
+                                                                <input type="radio" name="membership" value="3" /> Button 3
+                                                                <span></span>
+                                                            </label>
+                                                        </div>
+                                                        <div id="form_2_membership_error"> </div>
+                                                    </div>
+                                                </div>
+
+                                                <!--Checkboxes field-->
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-3">Services
+                                                        <span class="required"> * </span>
+                                                    </label>
+                                                    <div class="col-md-4">
+                                                        <div class="mt-checkbox-list" data-error-container="#form_2_services_error">
+                                                            <label class="mt-checkbox">
+                                                                <input type="checkbox" value="1" name="service" /> Service 1
+                                                                <span></span>
+                                                            </label>
+                                                            <label class="mt-checkbox">
+                                                                <input type="checkbox" value="2" name="service" /> Service 2
+                                                                <span></span>
+                                                            </label>
+                                                            <label class="mt-checkbox">
+                                                                <input type="checkbox" value="3" name="service" /> Service 3
+                                                                <span></span>
+                                                            </label>
+                                                        </div>
+                                                        <span class="help-block"> (Select at least two) </span>
+                                                        <div id="form_2_services_error"> </div>
+                                                    </div>
+                                                </div>
+
+                                                <!--Credit card num input field-->
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-3">Credit Card
+                                                        <span class="required"> * </span>
+                                                    </label>
+                                                    <div class="col-md-4">
+                                                        <div class="input-icon right">
+                                                            <i class="fa"></i>
+                                                            <input type="text" class="form-control" name="creditcard" /> </div>
+                                                        <span class="help-block"> e.g: 5500 0000 0000 0004 </span>
+                                                    </div>
+                                                </div>
+
+                                                <!--Dropdown Single Select field-->
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-3">Select
+                                                        <span class="required"> * </span>
+                                                    </label>
+                                                    <div class="col-md-4">
+                                                        <select class="form-control" name="select">
+                                                            <option value="">Select...</option>
+                                                            <option value="Category 1">Category 1</option>
+                                                            <option value="Category 2">Category 2</option>
+                                                            <option value="Category 3">Category 5</option>
+                                                            <option value="Category 4">Category 4</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                <!--Dropdown Multiple Select field-->
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-3">Multi Select
+                                                        <span class="required"> * </span>
+                                                    </label>
+                                                    <div class="col-md-4">
+                                                        <select class="form-control" name="select_multi" multiple>
+                                                            <option value="Category 1">Category 1</option>
+                                                            <option value="Category 2">Category 2</option>
+                                                            <option value="Category 3">Category 3</option>
+                                                            <option value="Category 4">Category 4</option>
+                                                            <option value="Category 5">Category 5</option>
+                                                        </select>
+                                                        <span class="help-block"> Max 3 Options | Min 1 Option </span>
+                                                    </div>
+                                                </div>
+
+                                                <!--Searchable Dropdown field-->
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-3">Select2 Dropdown
+                                                        <span class="required"> * </span>
+                                                    </label>
+                                                    <div class="col-md-4">
+                                                        <select class="form-control select2me" name="options2">
+                                                            <option value="">Select...</option>
+                                                            <option value="Option 1">Option 1</option>
+                                                            <option value="Option 2">Option 2</option>
+                                                            <option value="Option 3">Option 3</option>
+                                                            <option value="Option 4">Option 4</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                <!--Markdown Editor-->
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-3">Markdown</label>
+                                                    <div class="col-md-9">
+                                                        <textarea name="markdown" data-provide="markdown" rows="10" data-error-container="#editor_error"></textarea>
+                                                        <div id="editor_error"> </div>
+                                                    </div>
+                                                </div>
+                                                <!--WYSIHTML Editor-->
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-3">WYSIHTML5 Editor
+                                                    </label>
+                                                    <div class="col-md-9">
+                                                        <textarea class="wysihtml5 form-control" rows="6" name="editor1" data-error-container="#editor1_error"></textarea>
+                                                        <div id="editor1_error"> </div>
+                                                    </div>
+                                                </div>
+                                                <!--CKEditor Editor-->
+                                                <div class="form-group last">
+                                                    <label class="control-label col-md-3">CKEditor
+                                                    </label>
+                                                    <div class="col-md-9">
+                                                        <textarea class="ckeditor form-control" name="editor2" rows="6" data-error-container="#editor2_error"></textarea>
+                                                        <div id="editor2_error"> </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="form-actions">
+                                                <div class="row">
+                                                    <div class="col-md-offset-3 col-md-9">
+                                                        <button type="submit" class="btn green">Submit</button>
+                                                        <button type="button" class="btn default">Cancel</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                        <!-- END FORM-->
+                                    </div>
+                                </div>
+                                <!-- END VALIDATION STATES-->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END CONTENT BODY -->
+                </div>
+                
+
+            </div>
+            <!-- END CONTAINER -->
+            <!-- BEGIN FOOTER -->
+            <div class="page-footer">
+                <div class="page-footer-inner"> 2017 &copy; CMS By
+                    <a target=#>Cabletie Pte Ltd</a>
+                </div>
+                <div class="scroll-to-top">
+                    <i class="icon-arrow-up"></i>
+                </div>
+            </div>
+            <!-- END FOOTER -->
+        </div>
+        
+
+        <!--[if lt IE 9]>
+<script src="../assets/global/plugins/respond.min.js"></script>
+<script src="../assets/global/plugins/excanvas.min.js"></script> 
+<script src="../assets/global/plugins/ie8.fix.min.js"></script> 
+<![endif]-->
+        <!-- BEGIN CORE PLUGINS -->
+        <script src="../assets/global/plugins/jquery.min.js" type="text/javascript"></script>
+        <script src="../assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="../assets/global/plugins/js.cookie.min.js" type="text/javascript"></script>
+        <script src="../assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+        <script src="../assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
+        <script src="../assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
+        <!-- END CORE PLUGINS -->
+        <!-- BEGIN PAGE LEVEL PLUGINS -->
+        <script src="../assets/global/plugins/select2/js/select2.full.min.js" type="text/javascript"></script>
+        <script src="../assets/global/plugins/jquery-validation/js/jquery.validate.min.js" type="text/javascript"></script>
+        <script src="../assets/global/plugins/jquery-validation/js/additional-methods.min.js" type="text/javascript"></script>
+        <script src="../assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js" type="text/javascript"></script>
+        <script src="../assets/global/plugins/bootstrap-wysihtml5/wysihtml5-0.3.0.js" type="text/javascript"></script>
+        <script src="../assets/global/plugins/bootstrap-wysihtml5/bootstrap-wysihtml5.js" type="text/javascript"></script>
+        <script src="../assets/global/plugins/ckeditor/ckeditor.js" type="text/javascript"></script>
+        <script src="../assets/global/plugins/bootstrap-markdown/lib/markdown.js" type="text/javascript"></script>
+        <script src="./../assets/global/plugins/bootstrap-markdown/js/bootstrap-markdown.js" type="text/javascript"></script>
+        <!-- END PAGE LEVEL PLUGINS -->
+        <!-- BEGIN THEME GLOBAL SCRIPTS -->
+        <script src="../assets/global/scripts/app.min.js" type="text/javascript"></script>
+        <script src="../assets/global/scripts/accesscontrol.js" type="text/javascript"></script>
+        <script src="../assets/global/scripts/mailpreview.js" type="text/javascript"></script>
+        <script src="../assets/global/scripts/notifications.js" type="text/javascript"></script>
+        <script src="../assets/global/scripts/aboutuser.js" type="text/javascript"></script>
+        <!-- END THEME GLOBAL SCRIPTS -->
+        <!-- BEGIN PAGE LEVEL SCRIPTS -->
+        <script src="../assets/pages/scripts/form-generic-validated.js" type="text/javascript"></script>
+        <!-- END PAGE LEVEL SCRIPTS -->
+        <!-- BEGIN THEME LAYOUT SCRIPTS -->
+        <script src="../assets/layouts/layout/scripts/layout.min.js" type="text/javascript"></script>
+        <script src="../assets/layouts/layout/scripts/demo.min.js" type="text/javascript"></script>
+        <script src="../assets/layouts/global/scripts/quick-sidebar.min.js" type="text/javascript"></script>
+        <script src="../assets/layouts/global/scripts/quick-nav.min.js" type="text/javascript"></script>
+        <!-- END THEME LAYOUT SCRIPTS -->
+        <script>
+            $(document).ready(function()
+            {
+                $('#clickmewow').click(function()
+                {
+                    $('#radio1003').attr('checked', 'checked');
+                });
+            })
+        </script>
+    </body>
+
+</html>

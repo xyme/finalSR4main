@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<!-- TIMETABLE DESIGN EDIT DETAILS PAGE -->
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<!-- BEGIN HEAD -->
+	<head>
+		<meta charset="utf-8" />
+		<title>Edit Timetable Design</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta content="width=device-width, initial-scale=1" name="viewport" />
+		<meta content="" name="kodekode" />
+		<link href="../assets/global/css/googlefont.css" rel="stylesheet" type="text/css" />
+		<link href="../assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+		<link href="../assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
+		<link href="../assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+		<link href="../assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css" />
+		<!-- END GLOBAL MANDATORY STYLES -->
+		<!-- BEGIN PAGE LEVEL PLUGINS -->
+        <link href="../assets/global/plugins/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
+        <link href="../assets/global/plugins/select2/css/select2-bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="../assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet" type="text/css" />
+        <link href="../assets/global/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css" rel="stylesheet" type="text/css" />
+		<!-- END PAGE LEVEL PLUGINS -->
+		<!-- BEGIN THEME GLOBAL STYLES -->
+		<link href="../assets/global/css/components-rounded.min.css" rel="stylesheet" id="style_components" type="text/css" />
+		<link href="../assets/global/css/plugins.min.css" rel="stylesheet" type="text/css" />
+		<!-- END THEME GLOBAL STYLES -->
+		<!-- BEGIN PAGE LEVEL STYLES -->
+			<!-- >> PUT YOUR CUSTOM CSS HERE IF ANY<<  -->
+		<!-- END PAGE LEVEL STYLES -->
+		<!-- BEGIN THEME LAYOUT STYLES -->
+		<link href="../assets/layouts/layout/css/layout.min.css" rel="stylesheet" type="text/css" />
+		<link href="../assets/layouts/layout/css/themes/darkblue.min.css" rel="stylesheet" type="text/css" id="style_color" />
+		<link href="../assets/layouts/layout/css/custom.min.css" rel="stylesheet" type="text/css" />
+		<!-- END THEME LAYOUT STYLES -->
+	
+		<link rel="shortcut icon" href="favicon.ico" /> 
+        
+	</head>
+<!-- END HEAD -->
+
+
+    <body class="page-header-fixed page-sidebar-closed-hide-logo page-content-white">
+        <div class="page-wrapper">
+            <!-- BEGIN HEADER -->
+            <div class="page-header navbar navbar-fixed-top">
+                <!-- BEGIN HEADER INNER -->
+                <div class="page-header-inner ">
+                    
+                    <!-- BEGIN LOGO -->
+                    <div th:replace="header :: logo"> </div>
+                    <!-- END LOGO -->
+                    
+                    <!-- BEGIN RESPONSIVE MENU TOGGLER -->
+                    <div th:replace="header :: responsivemenu"> </div>
+                    <!-- END RESPONSIVE MENU TOGGLER -->
+                    
+                    <!-- BEGIN TOP NAVIGATION MENU -->
+                    <div class="top-menu">
+               			<ul class="nav navbar-nav pull-right">
+					        <li th:replace="header :: homebutton"> </li>
+               				<li class="dropdown dropdown-user">
+               					<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+           							<span th:text="${name.Staff.Name}" class="username username-hide-on-mobile"> KodeKode </span>
+                						<i class="fa fa-angle-down"></i>
+           						</a>
+           						<ul th:replace="header :: usernamedropdown"> </ul>
+               				</li>
+               			</ul>
+                    </div>
+                    <!-- END TOP NAVIGATION MENU -->
+                </div>
+                <!-- END HEADER INNER -->
+            </div>
+            <!-- END HEADER -->
+
+            <!-- BEGIN HEADER & CONTENT DIVIDER -->
+            <div class="clearfix"> </div>
+            <!-- END HEADER & CONTENT DIVIDER -->
+
+            <!-- BEGIN CONTAINER -->
+            <div class="page-container">
+                
+                <!-- BEGIN SIDEBAR -->
+                <div th:replace="sider :: sidebar"> </div>
+                <!-- END SIDEBAR -->
+
+
+
+<!-- =====NOTE========NOTE===== CONTENT BEGINS HERE!!! =====NOTE========NOTE===== -->   
+
+                <!-- BEGIN CONTENT BODY -->
+                <div class="page-content-wrapper">
+                    <div class="page-content">
+                    
+                        <!-- BEGIN PAGE HEADER-->
+                        <div class="page-bar">
+                            <ul class="page-breadcrumb">
+                                <li>
+                                    <a th:href="index">Home</a>
+                                    <i class="fa fa-circle"></i>
+                                </li>
+                                <li>
+                                    <a th:href="route-timetabledesign-editdetails">Timetable Design</a>
+                                    <i class="fa fa-circle"></i>
+                                </li>
+                                <li>
+                                    <span>Edit Details</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- END PAGE HEADER-->
+
+                        <p></p>
+                        
+                        <!-- !!! note === note === START OF YOUR CONTENT === note === note !!! -->
+                        <div class="row">
+                            <div class="col-md-12">
+                                <!-- BEGIN VALIDATION STATES-->
+                                <div class="portlet light portlet-fit portlet-form bordered">
+                                    <div class="portlet-title">
+                                        <div class="caption">
+                                            <i class="fa fa-pencil-square-o font-blue"></i>
+                                            <span class="caption-subject font-blue bold uppercase">Edit Timetable Design Form</span>
+                                        </div>
+                                    </div>
+                                    <div class="portlet-body">
+                                        <!-- BEGIN FORM-->
+                                        <form action="route-timetabledesign-editdetails" method="post" id="timetabledesign_form" class="form-horizontal">
+                                            <div class="form-body">
+                                                <div class="alert alert-danger display-hide">
+                                                    <button class="close" data-close="alert"></button> You have some form errors. Please check below. </div>
+                                                <div class="alert alert-success display-hide">
+                                                    <button class="close" data-close="alert"></button> Your form validation is successful! </div>
+
+
+                                                	
+                                                	<div class="form-group">
+                                                    <label class="control-label col-md-3">Schedule Type
+                                                    		<span class="required"> * </span>
+                                                    </label>
+                                                    <div class="col-md-4">
+                                                        <select th:name="scheduleType" class="form-control" name="scheduledropdown">
+                                                            <option value = ""></option>
+                                                            <option th:value = "30">Weekday</option>
+                                                            <option th:value = "40">Weekend / PH</option>
+                                                        </select>
+                                                    </div>
+                                                	</div>
+                                                	
+                                                	<div class="form-group">
+                                                    <label class="control-label col-md-3">Frequency  
+                                                    		<span class="required"> * </span>
+                                                    		<br> (Peak | Non-peak)
+                                                    </label>
+                                                    <div class="col-md-4">
+                                                        <select id="freq_choice" th:name="frequency" class="form-control" name="freqdropdown" onchange="return test()">
+                                                            <option value = ""></option>
+                                                            <option th:value = "0">2mins | 5mins</option>
+                                                            <option th:value = "1">3mins | 6mins</option>
+                                                            <option th:value = "2">4mins | 8mins</option>
+                                                        </select>
+                                                    </div>
+                                                	</div>
+                                                	
+                                                	<script>
+                                                		function test() {
+                                                			var freqChoice = document.getElementById('freq_choice').value;
+                                                			//alert(freqChoice);
+                                                			if (freqChoice=='0') {
+                                                    			document.getElementById('option1').style.display = 'block';
+                                                    			document.getElementById('option2').style.display = 'none';
+                                                    			document.getElementById('option3').style.display = 'none';
+                                                			}
+                                                			else if (freqChoice=='1') {
+                                                    			document.getElementById('option1').style.display = 'none';
+                                                    			document.getElementById('option2').style.display = 'block';
+                                                    			document.getElementById('option3').style.display = 'none';
+                                                			}
+                                                			else if (freqChoice=='2') {
+                                                    			document.getElementById('option1').style.display = 'none';
+                                                    			document.getElementById('option2').style.display = 'none';
+                                                    			document.getElementById('option3').style.display = 'block';
+                                                			}
+                                                		}
+                                                	</script>
+                                                	
+                                                	<div id="option1" hidden>
+	                                            		<div class="form-group">
+	                                                    <label class="control-label col-md-3">Service Start
+	                                                    		<span class="required"> * </span>
+	                                                    </label>
+	                                                    <div class="col-md-4">
+	                                                        <select th:name="start" class="form-control" name="start">
+	                                                            <option value = ""></option>
+	                                                            <option th:value = "0">0500 hrs</option>
+	                                                            <option th:value = "1">0505 hrs</option>
+	                                                            <option th:value = "2">0510 hrs</option>
+	                                                            <option th:value = "3">0515 hrs</option>
+	                                                            <option th:value = "4">0520 hrs</option>
+	                                                            <option th:value = "5">0525 hrs</option>
+	                                                            <option th:value = "6">0530 hrs</option>
+	                                                            <option th:value = "7">0535 hrs</option>
+	                                                            <option th:value = "8">0540 hrs</option>
+	                                                            <option th:value = "9">0545 hrs</option>
+	                                                            <option th:value = "10">0550 hrs</option>
+	                                                            <option th:value = "11">0555 hrs</option>
+	                                                            <option th:value = "12">0600 hrs</option>
+	                                                        </select>
+	                                                    </div>
+	                                                	</div>
+	                                                	<div class="form-group">
+	                                                    <label class="control-label col-md-3">Service End
+	                                                    		<span class="required"> * </span>
+	                                                    </label>
+	                                                    <div class="col-md-4">
+	                                                        <select th:name="end" class="form-control" name="end">
+	                                                            <option value = ""></option>
+	                                                            <option th:value = "216">2300 hrs</option>
+	                                                            <option th:value = "217">2305 hrs</option>
+	                                                            <option th:value = "218">2310 hrs</option>
+	                                                            <option th:value = "219">2315 hrs</option>
+	                                                            <option th:value = "220">2320 hrs</option>
+	                                                            <option th:value = "221">2325 hrs</option>
+	                                                            <option th:value = "222">2330 hrs</option>
+	                                                            <option th:value = "223">2335 hrs</option>
+	                                                            <option th:value = "224">2340 hrs</option>
+	                                                            <option th:value = "225">2345 hrs</option>
+	                                                            <option th:value = "226">2350 hrs</option>
+	                                                            <option th:value = "227">2355 hrs</option>
+	                                                            <option th:value = "228">0000 hrs (next day)</option>
+	                                                            <option th:value = "229">0005 hrs (next day)</option>
+	                                                            <option th:value = "230">0010 hrs (next day)</option>
+	                                                            <option th:value = "231">0015 hrs (next day)</option>
+	                                                            <option th:value = "232">0020 hrs (next day)</option>
+	                                                            <option th:value = "233">0025 hrs (next day)</option>
+	                                                            <option th:value = "234">0030 hrs (next day)</option>
+	                                                            <option th:value = "235">0035 hrs (next day)</option>
+	                                                            <option th:value = "236">0040 hrs (next day)</option>
+	                                                            <option th:value = "237">0045 hrs (next day)</option>
+	                                                            <option th:value = "238">0050 hrs (next day)</option>
+	                                                            <option th:value = "239">0055 hrs (next day)</option>
+	                                                            <option th:value = "240">0100 hrs (next day)</option>
+	                                                        </select>
+	                                                    </div>
+	                                                	</div>
+                                                	</div>
+                                                	
+                                                	<div id="option2" hidden>
+	                                                	<div class="form-group">
+	                                                    <label class="control-label col-md-3">Service Start
+	                                                    		<span class="required"> * </span>
+	                                                    </label>
+	                                                    <div class="col-md-4">
+	                                                        <select th:name="start" class="form-control" name="start">
+	                                                            <option value = ""></option>
+	                                                            <option th:value = "0">0500 hrs</option>
+	                                                            <option th:value = "1">0506 hrs</option>
+	                                                            <option th:value = "2">0512 hrs</option>
+	                                                            <option th:value = "3">0518 hrs</option>
+	                                                            <option th:value = "4">0524 hrs</option>
+	                                                            <option th:value = "5">0530 hrs</option>
+	                                                            <option th:value = "6">0536 hrs</option>
+	                                                            <option th:value = "7">0542 hrs</option>
+	                                                            <option th:value = "8">0548 hrs</option>
+	                                                            <option th:value = "9">0554 hrs</option>
+	                                                            <option th:value = "10">0600 hrs</option>
+	                                                        </select>
+	                                                    </div>
+	                                                	</div>
+	                                                	<div class="form-group">
+	                                                    <label class="control-label col-md-3">Service End
+	                                                    		<span class="required"> * </span>
+	                                                    </label>
+		                                                	<div class="col-md-4">
+		                                                        <select th:name="end" class="form-control" name="end">
+		                                                            <option value = ""></option>
+		                                                            <option th:value = "180">2300 hrs</option>
+		                                                            <option th:value = "181">2306 hrs</option>
+		                                                            <option th:value = "182">2312 hrs</option>
+		                                                            <option th:value = "183">2318 hrs</option>
+		                                                            <option th:value = "184">2324 hrs</option>
+		                                                            <option th:value = "185">2330 hrs</option>
+		                                                            <option th:value = "186">2336 hrs</option>
+		                                                            <option th:value = "187">2342 hrs</option>
+		                                                            <option th:value = "188">2348 hrs</option>
+		                                                            <option th:value = "189">2354 hrs</option>
+		                                                            <option th:value = "190">0000 hrs (next day)</option>
+		                                                            <option th:value = "191">0006 hrs (next day)</option>
+		                                                            <option th:value = "192">0012 hrs (next day)</option>
+		                                                            <option th:value = "193">0018 hrs (next day)</option>
+		                                                            <option th:value = "194">0024 hrs (next day)</option>
+		                                                            <option th:value = "195">0030 hrs (next day)</option>
+		                                                            <option th:value = "196">0036 hrs (next day)</option>
+		                                                            <option th:value = "197">0042 hrs (next day)</option>
+		                                                            <option th:value = "198">0048 hrs (next day)</option>
+		                                                            <option th:value = "199">0054 hrs (next day)</option>
+		                                                            <option th:value = "200">0100 hrs (next day)</option>
+		                                                        </select>
+		                                                    </div>
+	                                                    </div>
+                                               		</div>
+                                                	
+                                                	<div id="option3" hidden>
+	                                                	<div class="form-group">
+	                                                    <label class="control-label col-md-3">Service Start
+	                                                    		<span class="required"> * </span>
+	                                                    </label>
+	                                                    <div class="col-md-4">
+	                                                        <select th:name="start" class="form-control" name="start">
+	                                                            <option value = ""></option>
+	                                                            <option th:value = "0">0500 hrs</option>
+	                                                            <option th:value = "1">0508 hrs</option>
+	                                                            <option th:value = "2">0516 hrs</option>
+	                                                            <option th:value = "3">0524 hrs</option>
+	                                                            <option th:value = "4">0532 hrs</option>
+	                                                            <option th:value = "5">0540 hrs</option>
+	                                                            <option th:value = "6">0548 hrs</option>
+	                                                            <option th:value = "7">0556 hrs</option>
+	                                                            <option th:value = "8">0604 hrs</option>
+	                                                        </select>
+	                                                    </div>
+	                                                	</div>
+	                                                	<div class="form-group">
+	                                                    <label class="control-label col-md-3">Service End
+	                                                    		<span class="required"> * </span>
+	                                                    </label>
+		                                                	<div class="col-md-4">
+		                                                        <select th:name="end" class="form-control" name="end">
+		                                                            <option value = ""></option>
+		                                                            <option th:value = "135">2300 hrs</option>
+		                                                            <option th:value = "136">2308 hrs</option>
+		                                                            <option th:value = "137">2316 hrs</option>
+		                                                            <option th:value = "138">2324 hrs</option>
+		                                                            <option th:value = "139">2332 hrs</option>
+		                                                            <option th:value = "140">2340 hrs</option>
+		                                                            <option th:value = "141">2348 hrs</option>
+		                                                            <option th:value = "142">2356 hrs</option>
+		                                                            <option th:value = "143">0004 hrs (next day)</option>
+		                                                            <option th:value = "144">0012 hrs (next day)</option>
+		                                                            <option th:value = "145">0020 hrs (next day)</option>
+		                                                            <option th:value = "146">0028 hrs (next day)</option>
+		                                                            <option th:value = "147">0036 hrs (next day)</option>
+		                                                            <option th:value = "148">0044 hrs (next day)</option>
+		                                                            <option th:value = "149">0052 hrs (next day)</option>
+		                                                            <option th:value = "150">0100 hrs (next day)</option>
+		                                                        </select>
+		                                                    </div>
+	                                                    </div>
+                                                	</div>
+                                                
+                                            <div class="form-actions">
+                                                <div class="row">
+                                                    <div class="col-md-offset-3 col-md-9">
+                                                        <button type="submit" class="btn green">Submit</button>
+														<a href="route-timetabledesign-editdetails">
+															<button type="button" class="btn default">Cancel</button>
+														</a>
+													</div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                        <!-- END FORM-->
+                                    </div>
+                                </div>
+                                <!-- END VALIDATION STATES-->
+                            </div>
+                        </div>
+                        	
+                        	
+                        	
+                        	<!-- !!! note === note === END OF YOUR CONTENT === note === note !!! -->
+                        
+                    </div>
+                </div>
+                <!-- END CONTENT BODY-->
+            </div>
+            <!-- END CONTAINER -->
+            
+            <!-- BEGIN FOOTER -->
+            <div th:replace = "footer :: footerbar"> </div>
+            <!-- END FOOTER -->
+            
+        </div>
+        
+
+
+		<!-- BEGIN CORE PLUGINS -->
+		<script src="../assets/global/plugins/jquery.min.js" type="text/javascript"></script>
+		<script src="../assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+		<script src="../assets/global/plugins/js.cookie.min.js" type="text/javascript"></script>
+		<script src="../assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+		<script src="../assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
+		<script src="../assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
+		<!-- END CORE PLUGINS -->
+		<!-- BEGIN PAGE LEVEL PLUGINS -->
+		<script src="../assets/global/plugins/select2/js/select2.full.min.js" type="text/javascript"></script>
+        <script src="../assets/global/plugins/jquery-validation/js/jquery.validate.min.js" type="text/javascript"></script>
+        <script src="../assets/global/plugins/jquery-validation/js/additional-methods.min.js" type="text/javascript"></script>
+        <script src="../assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js" type="text/javascript"></script>
+        <script src="../assets/global/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js" type="text/javascript"></script>
+		<!-- END PAGE LEVEL PLUGINS -->
+		<!-- BEGIN THEME GLOBAL SCRIPTS -->
+		<script src="../assets/global/scripts/app.min.js" type="text/javascript"></script>
+		<!-- END THEME GLOBAL SCRIPTS -->
+		<!-- BEGIN PAGE LEVEL SCRIPTS -->
+		<script src="../assets/pages/scripts/route-timetabledesign-editdetails.js" type="text/javascript"></script>
+		<!-- END PAGE LEVEL SCRIPTS -->
+		<!-- BEGIN THEME LAYOUT SCRIPTS -->
+		<script src="../assets/layouts/layout/scripts/layout.min.js" type="text/javascript"></script>
+		<!-- END THEME LAYOUT SCRIPTS -->
+        <script>
+            $(document).ready(function()
+            {
+                $('#clickmewow').click(function()
+                {
+                    $('#radio1003').attr('checked', 'checked');
+                });
+            })
+        </script>
+    </body>
+
+</html>

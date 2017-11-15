@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>cabletie.cms.ops.operationDBModel.train</OriginalElement>
+  <nodes>
+    <node x="4.0" y="620.0">cabletie.cms.ops.operationDBModel.maintenance.MaintenanceTask</node>
+    <node x="890.8839285714286" y="343.0">cabletie.cms.ops.operationDBModel.maintenance.InspectionReport</node>
+    <node x="596.3839285714286" y="444.0">cabletie.cms.ops.operationDBModel.train.RollingStock</node>
+    <node x="4.0" y="0.0">cabletie.cms.ops.operationDBModel.maintenance.MaintenanceReport</node>
+    <node x="874.3839285714286" y="0.0">cabletie.cms.ops.operationDBModel.maintenance.Inspection</node>
+    <node x="536.0" y="233.0">cabletie.cms.ops.operationDBModel.infra.Depot.Depot</node>
+    <node x="0.0" y="255.0">cabletie.cms.ops.operationDBModel.maintenance.MaintenanceRequest</node>
+    <node x="283.0" y="167.0">cabletie.cms.ops.corporateDBModel.Staff</node>
+    <node x="613.2142857142857" y="0.0">cabletie.cms.ops.operationDBModel.train.Train</node>
+    <node x="0.0" y="914.0">cabletie.cms.ops.operationDBModel.maintenance.DefectReport</node>
+    <node x="308.0" y="0.0">cabletie.cms.ops.corporateDBModel.StaffTeam</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="cabletie.cms.ops.operationDBModel.train.RollingStock" target="cabletie.cms.ops.operationDBModel.train.Train">
+      <point x="72.8125" y="-124.5" />
+      <point x="785.6964285714286" y="424.0" />
+      <point x="779.5" y="424.0" />
+      <point x="779.5" y="213.0" />
+      <point x="780.5892857142857" y="213.0" />
+      <point x="64.375" y="91.5" />
+    </edge>
+    <edge source="cabletie.cms.ops.operationDBModel.train.Train" target="cabletie.cms.ops.operationDBModel.train.RollingStock">
+      <point x="38.625" y="91.5" />
+      <point x="754.8392857142857" y="203.0" />
+      <point x="768.5" y="203.0" />
+      <point x="768.5" y="424.0" />
+      <point x="756.5714285714286" y="424.0" />
+      <point x="43.6875" y="-124.5" />
+    </edge>
+    <edge source="cabletie.cms.ops.operationDBModel.train.RollingStock" target="cabletie.cms.ops.operationDBModel.infra.Depot.Depot">
+      <point x="-101.9375" y="-124.5" />
+      <point x="610.9464285714286" y="424.0" />
+      <point x="562.375" y="424.0" />
+      <point x="-79.125" y="80.5" />
+    </edge>
+    <edge source="cabletie.cms.ops.operationDBModel.infra.Depot.Depot" target="cabletie.cms.ops.operationDBModel.train.RollingStock">
+      <point x="26.375" y="80.5" />
+      <point x="667.875" y="424.0" />
+      <point x="669.1964285714286" y="424.0" />
+      <point x="-43.6875" y="-124.5" />
+    </edge>
+    <edge source="cabletie.cms.ops.operationDBModel.maintenance.MaintenanceReport" target="cabletie.cms.ops.operationDBModel.maintenance.MaintenanceRequest">
+      <point x="86.25" y="102.5" />
+      <point x="205.25" y="230.0" />
+      <point x="208.25" y="230.0" />
+      <point x="89.25" y="-157.5" />
+    </edge>
+    <edge source="cabletie.cms.ops.operationDBModel.maintenance.MaintenanceTask" target="cabletie.cms.ops.operationDBModel.maintenance.MaintenanceRequest">
+      <point x="-86.25" y="-124.5" />
+      <point x="32.75" y="595.0" />
+      <point x="29.75" y="595.0" />
+      <point x="-89.25" y="157.5" />
+    </edge>
+    <edge source="cabletie.cms.ops.operationDBModel.infra.Depot.Depot" target="cabletie.cms.ops.operationDBModel.train.Train">
+      <point x="-79.125" y="-80.5" />
+      <point x="562.375" y="203.0" />
+      <point x="626.0892857142857" y="203.0" />
+      <point x="-90.125" y="91.5" />
+    </edge>
+    <edge source="cabletie.cms.ops.operationDBModel.maintenance.MaintenanceRequest" target="cabletie.cms.ops.operationDBModel.maintenance.MaintenanceTask">
+      <point x="89.25" y="157.5" />
+      <point x="208.25" y="595.0" />
+      <point x="205.25" y="595.0" />
+      <point x="86.25" y="-124.5" />
+    </edge>
+    <edge source="cabletie.cms.ops.operationDBModel.train.Train" target="cabletie.cms.ops.operationDBModel.infra.Depot.Depot">
+      <point x="-38.625" y="91.5" />
+      <point x="677.5892857142857" y="213.0" />
+      <point x="667.875" y="213.0" />
+      <point x="26.375" y="-80.5" />
+    </edge>
+    <edge source="cabletie.cms.ops.operationDBModel.maintenance.InspectionReport" target="cabletie.cms.ops.operationDBModel.maintenance.Inspection">
+      <point x="-25.25" y="-102.5" />
+      <point x="966.6339285714286" y="318.0" />
+      <point x="962.5089285714286" y="318.0" />
+      <point x="-29.375" y="146.5" />
+    </edge>
+    <edge source="cabletie.cms.ops.operationDBModel.maintenance.MaintenanceRequest" target="cabletie.cms.ops.operationDBModel.maintenance.MaintenanceReport">
+      <point x="-29.75" y="-157.5" />
+      <point x="-28.75" y="102.5" />
+    </edge>
+    <edge source="cabletie.cms.ops.corporateDBModel.Staff" target="cabletie.cms.ops.corporateDBModel.StaffTeam">
+      <point x="-78.0" y="-267.5" />
+      <point x="309.0" y="142.0" />
+      <point x="327.75" y="142.0" />
+      <point x="-59.25" y="58.5" />
+    </edge>
+    <edge source="cabletie.cms.ops.operationDBModel.maintenance.Inspection" target="cabletie.cms.ops.operationDBModel.maintenance.InspectionReport">
+      <point x="29.375" y="146.5" />
+      <point x="1021.2589285714286" y="318.0" />
+      <point x="1017.1339285714286" y="318.0" />
+      <point x="25.25" y="-102.5" />
+    </edge>
+    <edge source="cabletie.cms.ops.corporateDBModel.StaffTeam" target="cabletie.cms.ops.corporateDBModel.Staff">
+      <point x="59.25" y="58.5" />
+      <point x="446.25" y="142.0" />
+      <point x="465.0" y="142.0" />
+      <point x="78.0" y="-267.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="75.5" y="492.5" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

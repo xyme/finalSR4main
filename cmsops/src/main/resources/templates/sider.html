@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+
+<div th:fragment="sidebar" class="page-sidebar navbar-collapse collapse">
+	<ul class="page-sidebar-menu  page-sidebar-menu-light page-sidebar-menu-hover-submenu  page-header-fixed " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200" style="padding-top: 20px">
+		<li class="sidebar-toggler-wrapper hide">
+			<div class="sidebar-toggler">
+				<span></span>
+			</div>
+		</li>
+		
+		
+		<!-- &&&&& E-HR HEADER &&&&& -->
+		<li class="heading">
+			<h3 style="color:yellow" class="uppercase">E-HR</h3>
+		</li>
+		
+		<!-- ##### PERFORMANCE TAB ##### -->
+		<li class="nav-item ">
+             <a href="javascript:;" class="nav-link nav-toggle" id="performanceMenu">
+                 <i class="fa fa-area-chart"></i>
+                 <span class="title">My Performance</span>
+                 <span class="arrow"></span>
+             </a>
+             <ul class="sub-menu">
+                 <li class="nav-item " id="attendanceSubmenu">
+                     <a href="attend-myview.html" class="nav-link ">
+                         <i class="fa fa-calendar-check-o"></i>
+                         <span class="title">My Attendance</span>
+                     </a>
+                 </li>
+                 <li class="nav-item  " id="appraisalsSubmenu">
+                     <a href=/staff-viewAppraisal class="nav-link ">
+                         <i class="fa fa-check-square"></i>
+                         <span class="title">My Appraisals</span>
+                     </a>
+                 </li>
+                 <li class="nav-item  " id="violationsSubmenu">
+                     <a href=/staff-viewViolation class="nav-link ">
+                         <i class="fa fa-frown-o"></i>
+                         <span class="title">My Violations Records</span>
+                     </a>
+                 </li>
+             </ul>
+         </li>
+
+		<!-- ##### DEVELOPMENT TAB ##### -->
+		<li class="nav-item ">
+            <a href="javascript:;" class="nav-link nav-toggle" id="developmentMenu">
+                <i class="icon-layers"></i>
+                <span class="title">My Development</span>
+                <span class="arrow"></span>
+            </a>
+            <ul class="sub-menu">
+                <li class="nav-item " id="newTrainingSubmenu">
+                    <a href=# class="nav-link ">
+                        <i class="fa fa-book"></i>
+                        <span class="title">Available Training & Classes</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+		<!-- ##### LEAVE TAB ##### -->
+		<li class="nav-item ">
+            <a href=# class="nav-link " id="leaveMenu">
+                <i class="fa fa-leaf"></i>
+                <span class="title">Leave Management</span>
+            </a>
+        </li>
+        
+        <!-- ##### HR TAB ##### -->
+		<li class="nav-item  ">
+		     <a href="javascript:;" class="nav-link nav-toggle" id="hrMgmtMenu">
+		         <i class="fa fa-user-secret"></i>
+		         <span class="title">HR Management</span>
+		         <span class="arrow"></span>
+		     </a>
+		     <ul class="sub-menu">
+		         <li class="nav-item  " id="rosterPlanningSubmenu"">
+		             <a href=# class="nav-link ">
+		                 <i class="fa fa-table"></i>
+		                 <span class="title">Roster Planning</span>
+		             </a>
+					 <ul class="sub-menu">
+						 <li class="nav-item " id="generateRosterSubsubmenu">
+							 <a href="roster-generate.html" class="nav-link ">
+								 <i class="fa fa-plus-square"></i>
+								 <span class="title">Generate Roster</span>
+							 </a>
+						 </li>
+						 <li class="nav-item " id="viewAllRostersSubsubmenu">
+							 <a href="roster-viewall.html" class="nav-link ">
+								 <i class="fa fa-calendar"></i>
+								 <span class="title">View All Roster</span>
+							 </a>
+						 </li>
+					 </ul>
+		         </li>
+		         <li class="nav-item  " id="staffSubmenu"">
+		             <a href="/staff-int-viewall" class="nav-link ">
+		                 <i class="fa fa-database"></i>
+		                 <span class="title">Staff Profile</span>
+		             </a>
+		         </li>
+		         <li class="nav-item ">
+		             <a href="javascript:;" class="nav-link nav-toggle" id="employeeMgmtSubmenu">
+		                 <i class="fa fa-briefcase"></i>
+		                 <span class="title">Employee Management</span>
+		                 <span class="arrow"></span>
+		             </a>
+		              <ul class="sub-menu">
+		                 <li class="nav-item " id="employeePerformanceMgmtSubsubmenu">
+		                     <a href=# class="nav-link ">
+		                         <i class="fa fa-line-chart"></i>
+		                         <span class="title">Employee Performance Management</a></span>
+		                <ul class="sub-menu">
+		                 <li class="nav-item " id="employeePerformanceMgmtSubsubmenu">
+		                     <a href=/staff-viewAllAppraisal class="nav-link ">
+		                         <i class="fa fa-line-chart"></i>
+		                         <span class="title">View all Appraisals</a></span>
+		                 </li>
+		                 
+		                   <li class="nav-item " id="employeePerformanceMgmtSubsubmenu">
+		                     <a href=/staff-viewAllViolations class="nav-link ">
+		                         <i class="fa fa-line-chart"></i>
+		                         <span class="title">View all Violations</a></span>
+		                 </li>
+		                 
+		                   <li class="nav-item " id="employeePerformanceMgmtSubsubmenu">
+		                     <a href= "/staff-feedback" class="nav-link ">
+		                         <i class="fa fa-line-chart"></i>
+		                         <span class="title">View all Feedbacks from customers</a></span>
+		                 </li>
+		                 
+		                 </ul>
+		                 </li>
+		                 <li class="nav-item " id="employeeDevelopmentMgmtSubsubmenu">
+		                     <a href=# class="nav-link ">
+		                         <i class="fa fa-book"></i>
+		                         <span class="title">Employee Development Management</a></span>
+		                 </li>
+		                 <li class="nav-item " id="employeeLeaveMgmtSubsubmenu">
+		                     <a href="underconstruction.html" class="nav-link ">
+		                         <i class="fa fa-leaf"></i>
+		                         <span class="title">Employee Leave Management</a></span>
+		                 </li>
+		             </ul>
+		         </li>
+		     </ul>
+		 </li>
+
+		<li class="nav-item ">
+			<a href="javascript:;" class="nav-link nav-toggle" id="attendanceMgmtMenu">
+				<i class="fa fa-calendar-check-o"></i>
+				<span class="title">Attendance Management</span>
+				<span class="arrow"></span>
+			</a>
+			<ul class="sub-menu">
+				<li class="nav-item " id="viewAttendanceSubsubmenu">
+					<a href="attend-view.html" class="nav-link ">
+						<i class="fa fa-calendar"></i>
+						<span class="title">View All Attendance</a></span>
+				</li>
+				<li class="nav-item " id="updateAttendanceSubsubmenu">
+					<a href="attend-update-home.html" class="nav-link ">
+						<i class="fa fa-check-square"></i>
+						<span class="title">Update Attendance</a></span>
+				</li>
+			</ul>
+		</li>
+
+		<!-- $$$$$ E-HR HEADER $$$$$ -->
+        <li class="heading">
+            <h3 style="color:yellow" class="uppercase">My Workspace</h3>
+        </li>
+        
+		<!-- ##### ROSTER TAB ##### -->
+		<li class="nav-item ">
+		    <a href="roster-myview.html" class="nav-link " id="rosterMenu">
+		        <i class="fa fa-building-o"></i>
+		        <span class="title">My Roster</span>
+		    </a>
+		</li>
+
+		<!-- ##### TRAIN MGMT TAB ##### -->
+		<li class="nav-item ">
+			<a href="javascript:;" class="nav-link nav-toggle" id="trainsMgmtMenu">
+				<i class="fa fa-subway"></i>
+				<span class="title">Trains Management</span>
+				<span class="arrow"></span>
+			</a>
+			<ul class="sub-menu">
+				<li class="nav-item start " id="timetableSubmenu">
+					<a href="route-timetable-wkday-viewall" class="nav-link ">
+						<i class="fa fa-calendar"></i>
+						<span class="title">View Timetable</span>
+					</a>
+				</li>
+				<li class="nav-item start " id="trainRouteDriverAssignSubmenu">
+					<a href="route-trainroute-viewedit" class="nav-link ">
+						<i class="fa fa-map-o"></i>
+						<span class="title">Train-Route Assignment</span>
+					</a>
+				</li>
+				<li class="nav-item start " id="blockDesignDisplaySubmenu">
+					<a href="route-blockdesign-viewedit" class="nav-link ">
+						<i class="fa fa-map-signs"></i>
+						<span class="title">Block Design</span>
+					</a>
+				</li>
+				<li class="nav-item start " id="interstationTimeDisplaySubmenu">
+					<a href="route-interstationdetails-viewall" class="nav-link ">
+						<i class="fa fa-clock-o"></i>
+						<span class="title">Interstation Traveling Details</span>
+					</a>
+				</li>
+				<li class="nav-item " id="networkDesignSubmenu">
+					<a href="route-networkdesign-viewall" class="nav-link ">
+						<i class="fa fa-code-fork"></i>
+						<span class="title">Network Design</span>
+					</a>
+				</li>
+				<li class="nav-item  " id="timetableDesignSubmenu">
+					<a href="route-timetabledesign-editdetails" class="nav-link ">
+						<i class="fa fa-table"></i>
+						<span class="title">Timetable Design</span>
+					</a>
+				</li>
+				<li class="nav-item start " id="trainConfigSubmenu">
+					<a href="trainconfig-viewall" class="nav-link ">
+						<i class="fa fa-gears"></i>
+						<span class="title">Train Configuration</span>
+					</a>
+				</li>
+				<li class="nav-item start " id="liveStatusSubmenu">
+					<a href=# class="nav-link ">
+						<i class="fa fa-flash"></i>
+						<span class="title">Live Status</span>
+					</a>
+				</li>
+			</ul>
+		</li>
+
+
+		<!-- ##### INVENT-ASSET TAB ##### -->
+		<li class="nav-item  ">
+		    <a href="javascript:;" class="nav-link nav-toggle" id="inventAssetInfraMenu">
+		        <i class="fa fa-cubes"></i>
+		        <span class="title">Inventory, Asset and Infrastructure</span>
+		        <span class="arrow"></span>
+		    </a>
+		    <ul class="sub-menu">
+		        <li class="nav-item  ">
+		            <a href="inventory-viewall.html" class="nav-link nav-toggle" id="inventoryMgmtSubmenu">
+		                <i class="fa fa-cube"></i>
+		                <span class="title">Inventory Management</span>
+		            </a>
+		        </li>
+		        <li class="nav-item " id="assetSubmenu">
+		            <a href="asset-viewall.html" class="nav-link ">
+		                <i class="fa fa-tags"></i>
+		                <span class="title">Asset Management</span>
+		            </a>
+		        </li>
+		        <li class="nav-item " id="assetLogSubmenu">
+		            <a href="asset-log.html" class="nav-link ">
+		                <i class="fa fa-calculator"></i>
+		                <span class="title">Asset Logs</span>
+		            </a>
+		        </li>
+				<li class="nav-item " id="rsSubmenu">
+					<a href="rs-viewall.html" class="nav-link ">
+						<i class="fa fa-tags"></i>
+						<span class="title">Rolling Stock Management</span>
+					</a>
+				</li>
+		        <li class="nav-item " id="dispatchItemsSubmenu">
+		            <a href="itemreq-viewall.html" class="nav-link ">
+		                <i class="fa fa-cart-plus"></i>
+		                <span class="title">Item Requests</span>
+		            </a>
+		        </li>
+		        <li class="nav-item " id="centralWarehouseItemsSubmenu">
+		            <a href="itemreq-viewstore.html" class="nav-link ">
+		                <i class="fa fa-truck"></i>
+		                <span class="title">View Central Warehouse</span>
+		            </a>
+		        </li>
+		        <li class="nav-item " id="infraMgmtSubmenu">
+				    <a href="infra-viewall.html" class="nav-link nav-toggle">
+				        <i class="fa fa-university"></i>
+				        <span class="title">Infrastructure Management</span>
+				    </a>
+				</li>
+		        <li class="nav-item " id="procureRequestsSubmenu">
+		            <a href="rfp-viewall.html" class="nav-link ">
+		                <i class="fa fa-shopping-cart"></i>
+		                <span class="title">Procurement Requests</span>
+		            </a>
+		        </li>
+		        <li class="nav-item " id="procureTasksSubmenu">
+		            <a href="procure-viewall.html" class="nav-link ">
+		                <i class="fa fa-credit-card"></i>
+		                <span class="title">Procurement Tasks</span>
+		            </a>
+				</li>
+		    </ul>
+		</li>
+
+		<!-- ##### MAINTAINENACE TAB ##### -->
+		<li class="nav-item ">
+            <a href="javascript:;" class="nav-link nav-toggle" id="maintainMgmtMenu">
+                <i class="fa fa-wrench"></i>
+                <span class="title">Maintenance</span>
+                <span class="arrow"></span>
+            </a>
+            <ul class="sub-menu">
+				<li class="nav-item  ">
+					<a href="defect-viewall.html" class="nav-link nav-toggle" id="viewDefectSubmenu">
+						<i class="fa fa-sticky-note-o"></i>
+						<span class="title">Defect Reports</span>
+						<span class="arrow"></span>
+					</a>
+				</li>
+                <li class="nav-item  ">
+                    <a href="javascript:;" class="nav-link nav-toggle" id="maintainRequestSubmenu">
+                        <i class="fa fa-sticky-note-o"></i>
+                        <span class="title">Maintenance Requests</span>
+                        <span class="arrow"></span>
+                    </a>
+                        <ul class="sub-menu">
+                            <li class="nav-item " id="newMaintainRequestSubsubmenu">
+                                <a href="maintreq-addnew.html" class="nav-link "><i class="fa fa-plus-square"></i>
+                                    <span class="title">New Request</a></span>
+                            </li>
+                            <li class="nav-item " id="viewAllMaintainRequestsSubsubmenu">
+                                <a href="maintreq-viewall.html" class="nav-link "><i class="fa fa-eye"></i>
+                                    <span class="title"> View All Requests</a></span>
+                            </li>
+                        </ul>
+                </li>
+				<li class="nav-item " id="taskAssignSubmenu">
+					<a href="javascript:;" class="nav-link ">
+						<i class="fa fa-server"></i>
+						<span class="title">Maintenance Tasks</span>
+					</a>
+					<ul class="sub-menu">
+						<li class="nav-item " id="newMaintainTaskSubsubmenu">
+							<a href="mainttask-addnew.html" class="nav-link "><i class="fa fa-plus-square"></i>
+								<span class="title">New Task</a></span>
+						</li>
+						<li class="nav-item " id="viewAllMaintainTasksSubsubmenu">
+							<a href="mainttask-viewall.html" class="nav-link "><i class="fa fa-eye"></i>
+								<span class="title">View All Tasks</a></span>
+						</li>
+					</ul>
+				</li>
+				<li class="nav-item " id="inspectionSubmenu">
+					<a href="javascript:;" class="nav-link ">
+						<i class="fa fa-calendar-plus-o"></i>
+						<span class="title">Inspections</span>
+					</a>
+					<ul class="sub-menu">
+						<li class="nav-item " id="newInspectionSubsubmenu">
+							<a href="inspect-addnew.html" class="nav-link "><i class="fa fa-plus-square"></i>
+								<span class="title">New Inspection</a></span>
+						</li>
+						<li class="nav-item " id="viewAllInspectionSubsubmenu">
+							<a href="inspect-viewall.html" class="nav-link "><i class="fa fa-eye"></i>
+								<span class="title">View All Inspections</a></span>
+						</li>
+					</ul>
+				</li>
+                <li class="nav-item  ">
+                    <a href="javascript:;" class="nav-link nav-toggle" id="reportingSubmenu">
+                        <i class="fa fa-file-text-o"></i>
+                        <span class="title">Reports</span>
+                        <span class="arrow"></span>
+                    </a>
+                        <ul class="sub-menu">
+                            <li class="nav-item  ">
+                                <a href="inspect-report-viewall.html" class="nav-link nav-toggle" id="inspectionReportSubsubmenu">
+                                    <i class="fa fa-gear"></i>
+                                    <span class="title">Inspection Reports</span>
+                                    <span class="arrow"></span>
+                                </a>
+                            <li class="nav-item  ">
+                                <a href="maint-report-viewall.html" class="nav-link nav-toggle" id="maintenanceReportSubsubmenu">
+                                    <i class="fa fa-gavel"></i>
+                                    <span class="title">Maintenance Reports</span>
+                                    <span class="arrow"></span>
+                                </a>
+                        </ul>
+                    </li>
+            </ul>
+        </li>
+
+		<!-- ##### OPERATIONS TAB ##### -->
+		<li class="nav-item  ">
+	       <a href="javascript:;" class="nav-link nav-toggle" id="opsMgmtMenu">
+	           <i class="icon-settings"></i>
+	           <span class="title">Operations</span>
+	           <span class="arrow"></span>
+	       </a>
+	       <ul class="sub-menu">
+			   <li class="nav-item " id="teamManagementSubmenu">
+				   <a href="team-viewall.html" class="nav-link ">
+					   <i class="fa fa-flash"></i>
+					   <span class="title">Team Management</span>
+				   </a>
+			   </li>
+	           <li class="nav-item " id="trainLiveStatusSubmenu">
+	               <a href=# class="nav-link ">
+	                   <i class="fa fa-flash"></i>
+	                   <span class="title">Train LiveStatus</span>
+	               </a>
+	           </li>
+	           <li class="nav-item " id="ticketingSubmenu">
+	               <a href=# class="nav-link ">
+	                   <i class="fa fa-ticket"></i>
+	                   <span class="title">Ticketing Management</span>
+	               </a>
+	           </li>
+	           <li class="nav-item " id="driverReportSubmenu">
+	               <a href=# class="nav-link ">
+	                   <i class="fa fa-file-text-o"></i>
+	                   <span class="title">Post-trip Driver Report</span>
+	               </a>
+	           </li>
+	           <li class="nav-item " id="stationReportSubmenu">
+	               <a href=# class="nav-link ">
+	                   <i class="fa fa-file-text-o"></i>
+	                   <span class="title">Post-shift Station Report</span>
+	               </a>
+	           </li>
+	           <li class="nav-item " id="cashCollectionReportSubmenu">
+	               <a href=# class="nav-link ">
+	                   <i class="fa fa-money"></i>
+	                   <span class="title">Cash Collection Accountability Report</span>
+	               </a>
+	           </li>
+	       </ul>
+       </li>
+       
+       
+		<!-- ***** E-HR HEADER ***** -->
+		<li class="heading">
+			<h3 style="color:yellow" class="uppercase">Communications</h3>
+		</li>
+		<!-- #####CREATE CHANNEL COMM TAB ##### -->
+		<li class="nav-item  ">
+			<a href="staff-createMessage" class="nav-link " id="comm">
+				<i class="fa fa-envelope"></i>
+				<span class="title">Create Communication Channel</span>
+			</a>
+		</li>
+
+		<!-- ##### ANNOUNCEMENTS TAB ##### -->
+		<li class="nav-item  ">
+			<a href="javascript:;" class="nav-link nav-toggle" id="announceMenu">
+				<i class="fa fa-bullhorn"></i>
+				<span class="title">Announcements</span>
+				<span class="arrow"></span>
+			</a>
+			<ul class="sub-menu">
+				<li class="nav-item " id="inboxSubmenu">
+					<a href="staff-viewAnnouncement" class="nav-link nav-toggle" >
+						<i class="fa fa-circle-o-notch"></i>
+						<span class="title">All Announcements</span>
+						<span class="arrow"></span>
+					</a>
+				</li>
+				<li class="nav-item  " id="sentMsgesSubmenu">
+					<a href="staff-viewSentAnnouncements" class="nav-link ">
+						<i class="fa fa-paper-plane-o"></i>
+						<span class="title">Sent Announcements</span>
+					</a>
+				</li>
+			</ul>
+		</li>
+
+
+		<!-- ##### MESSAGES TAB ##### -->
+		<li class="nav-item  ">
+			<a href="javascript:;" class="nav-link nav-toggle" id="messagingMenu">
+				<i class="fa fa-envelope-o"></i>
+				<span class="title">Messaging</span>
+				<span class="arrow"></span>
+			</a>
+			<ul class="sub-menu">
+				<li class="nav-item " id="inboxSubmenu">
+					<a href="staff-viewMessages" class="nav-link"  >
+						<i class="fa fa-inbox"></i>
+						<span class="title">Inbox</span>
+
+					</a>
+				</li>
+				<li class="nav-item  " id="sentMsgesSubmenu">
+					<a href="staff-viewMessageSent" class="nav-link ">
+						<i class="fa fa-paper-plane"></i>
+						<span class="title">Sent Messages</span>
+					</a>
+				</li>
+			</ul>
+		</li>
+
+
+		<!-- ##### NOTIFICATIONS TAB ##### -->
+		<li class="nav-item  ">
+		<a href="staff-viewNotification" class="nav-link " id="notificationsMenu">
+			<i class="fa fa-bell-o"></i>
+			<span class="title">Notifications</span>
+		</a>
+		</li>
+
+
+		<!-- ##### LIVEUPDATES TAB ##### -->
+	<!--	<li class="nav-item  ">
+			<a href="javascript:;" class="nav-link nav-toggle" id="liveUpdatesMenu">
+				<i class="fa fa-flash"></i>
+				<span class="title">Live Updates</span>
+				<span class="arrow"></span>
+			</a>
+			<ul class="sub-menu">
+				&lt;!&ndash; <li class="nav-item  " id="massCommSubmenu">
+                     <a href=# class="nav-link ">
+                         <i class="fa fa-users"></i>
+                         <span class="title">Mass Communication</span>
+                     </a>
+                 </li> &ndash;&gt;
+				<li class="nav-item  " id="passengerUpdateSubmenu">
+					<a href=# class="nav-link ">
+						<i class="fa fa-user-secret"></i>
+						<span class="title">Passenger LiveStatus Update</span>
+					</a>
+				</li>
+			</ul>
+		</li>
+-->
+		<!-- ##### CUSTOMER COMMS TAB ##### -->
+		<li class="nav-item  ">
+			<a href="javascript:;" class="nav-link nav-toggle" id="custCommsMenu">
+			    <i class="fa fa-microphone"></i>
+			    <span class="title">Customers Communications</span>
+			    <span class="arrow"></span>
+			</a>
+			<ul class="sub-menu">
+			    <li class="nav-item " id="custFeedbacksSubmenu">
+			        <a href= /staff-feedback class="nav-link ">
+			            <i class="fa fa-smile-o"></i>
+			            <span class="title">Customers Feedbacks</span>
+			        </a>
+			    </li>
+			</ul>
+		</li>
+
+
+		<!-- ^^^^^ CORP WORKSPACE HEADER ^^^^^ -->
+		<li class="heading">
+			<h3 style="color:yellow" class="uppercase">My Corporate Workspace</h3>
+		</li>
+		
+		<!-- ##### COMP PERFORMANCE TAB ##### -->
+		<li class="nav-item ">
+		    <a href=# class="nav-link " id="companyPerfMenu">
+		        <i class="fa fa-pie-chart"></i>
+		        <span class="title">Company Performance</span>
+		    </a>
+		</li>
+
+		<!-- ##### POINTS MGMT TAB ##### -->
+		<li class="nav-item ">
+            <a href="javascript:;" class="nav-link nav-toggle" id="starFishMgmtMenu">
+                <i class="fa fa-star-o"></i>
+                <span class="title">StarFish</span>
+                <span class="arrow"></span>
+            </a>
+            <ul class="sub-menu">
+                <li class="nav-item " id="pointsMgmtSubmenu">
+                    <a href=# class="nav-link ">
+                        <i class="fa fa-rub"></i>
+                        <span class="title">Points Management</span>
+                    </a>
+                </li>
+                <li class="nav-item  " id="merchantMgmtSubmenu">
+                    <a href=# class="nav-link ">
+                        <i class="fa fa-briefcase"></i>
+                        <span class="title">Merchants Management</span>
+                    </a>
+                </li>
+                <li class="nav-item  " id="commuterAcctMgmtSubmenu">
+                    <a href=# class="nav-link ">
+                        <i class="fa fa-database"></i>
+                        <span class="title">Commuters Accounts Management</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+		<!-- ##### EXT COMP MGMT TAB ##### -->
+		<li class="nav-item ">
+		    <a href="javascript:;" class="nav-link nav-toggle" id="externalCompMgmtMenu">
+		        <i class="fa fa-industry"></i>
+		        <span class="title">External Companies Management</span>
+		        <span class="arrow"></span>
+		    </a>
+		    <ul class="sub-menu">
+		        <li class="nav-item " id="externalCompAcctMgmtSubmenu">
+		            <a href=# class="nav-link ">
+		                <i class="fa fa-database"></i>
+		                <span class="title">External Company Accounts Management</span>
+		            </a>
+		        </li>
+		        <li class="nav-item  " id="tenderMgmtSubmenu">
+		            <a href=# class="nav-link ">
+		                <i class="fa fa-clone"></i>
+		                <span class="title">Tenders Management</span>
+		            </a>
+		        </li>
+		        <li class="nav-item  " id="leaseMgmtSubmenu">
+		            <a href=# class="nav-link ">
+		                <i class="fa fa-pencil-square-o"></i>
+		                <span class="title">Lease Management</span>
+		            </a>
+		        </li>
+		        <li class="nav-item  " id="adsMgmtSubmenu">
+		            <a href=# class="nav-link ">
+		                <i class="fa fa-picture-o"></i>
+		                <span class="title">Ads Management</span>
+		            </a>
+		        </li>
+		    </ul>
+		</li>
+
+		<!-- ##### COST CENTER TAB ##### -->
+		<li class="nav-item ">
+		    <a href=# class="nav-link nav-toggle" id="costCentreMgmtMenu">
+		        <i class="fa fa-dollar"></i>
+		        <span class="title">Cost Centre Management</span>
+		    </a>
+		</li>
+             
+		<!-- ##### FAREBOX TAB ##### -->
+		<li class="nav-item ">
+		    <a href=# class="nav-link nav-toggle" id="fareboxMgmtMenu">
+		        <i class="fa fa-archive"></i>
+		        <span class="title">Farebox Management</span>
+		    </a>
+		    <ul class="sub-menu">
+		        <li class="nav-item " id="fareboxAdjustSubmenu">
+		            <a href=# class="nav-link ">
+		                <i class="fa fa-ticket"></i>
+		                <span class="title">Farebox Adjustment</span>
+		            </a>
+		        </li>
+		    </ul>
+		</li>
+         
+		<!-- ##### REAL ESTATE TAB ##### -->
+		<li class="nav-item ">
+		    <a href="javascript:;" class="nav-link nav-toggle" id="realEstateMgmtMenu">
+		        <i class="fa fa-home"></i>
+		        <span class="title">Real Estate Management</span>
+		        <span class="arrow"></span>
+		    </a>
+		    <ul class="sub-menu">
+		        <li class="nav-item " id="leaseAreasSubmenu">
+		            <a href=# class="nav-link ">
+		                <i class="fa fa-pencil-square-o"></i>
+		                <span class="title">Leaseable Areas Management</span>
+		            </a>
+		        </li>
+		        <li class="nav-item  " id="adsSpacesSubmenu">
+		            <a href=# class="nav-link ">
+		                <i class="fa fa-picture-o"></i>
+		                <span class="title">Ads Spaces Management</span>
+		            </a>
+		        </li>
+		    </ul>
+		</li>
+
+		<!-- ##### NETWORK MGMT TAB ##### -->
+		<li class="nav-item ">
+		    <a href="javascript:;" class="nav-link nav-toggle" id="trainNetworkMgmtMenu">
+		        <i class="fa fa-map-signs"></i>
+		        <span class="title">Train Network Management</span>
+		        <span class="arrow"></span>
+		    </a>
+		    <ul class="sub-menu">
+		        <li class="nav-item " id="networkDesignSubmenu">
+		            <a href=# class="nav-link ">
+		                <i class="fa fa-code-fork"></i>
+		                <span class="title">Network Design</span>
+		            </a>
+		        </li>
+		        <li class="nav-item  " id="timetableDesignSubmenu">
+		            <a href=# class="nav-link ">
+		                <i class="fa fa-table"></i>
+		                <span class="title">Timetable Design</span>
+		            </a>
+		        </li>
+		        <li class="nav-item  " id="routeDesignSubmenu">
+		            <a href=# class="nav-link ">
+		                <i class="fa fa-road"></i>
+		                <span class="title">Route Design</span>
+		            </a>
+		        </li>
+		    </ul>
+		</li>
+		        
+
+		<!-- ##### AUDIT TAB ##### -->
+		<li class="nav-item ">
+		    <a href="javascript:;" class="nav-link nav-toggle" id="auditMenu">
+		        <i class="fa fa-gavel"></i>
+		        <span class="title">Audit</span>
+		        <span class="arrow"></span>
+		    </a>
+		    <ul class="sub-menu">
+		        <li class="nav-item " id="auditInspectionReportsSubmenu">
+		            <a href=# class="nav-link ">
+		                <i class="fa fa-gear"></i>
+		                <span class="title">Audit Inspection Reports</span>
+		            </a>
+		        </li>
+		        <li class="nav-item  " id="auditMaintenanceReportsSubmenu">
+		            <a href=# class="nav-link ">
+		                <i class="fa fa-wrench"></i>
+		                <span class="title">Audit Maintenance Reports</span>
+		            </a>
+		        </li>
+		        <li class="nav-item  " id="auditPosttripsReportsSubmenu">
+		            <a href=# class="nav-link ">
+		                <i class="fa fa-subway"></i>
+		                <span class="title">Audit Post-trips Reports</span>
+		            </a>
+		        </li>
+		        <li class="nav-item  " id="auditPostshiftsReportsSubmenu">
+		            <a href=# class="nav-link ">
+		                <i class="fa fa-building-o"></i>
+		                <span class="title">Audit Post-shifts Reports</span>
+		            </a>
+		        </li>
+		        <li class="nav-item  " id="auditDispatchesSubmenu">
+		            <a href=# class="nav-link ">
+		                <i class="fa fa-truck"></i>
+		                <span class="title">Audit Dispatches</span>
+		            </a>
+		        </li>
+		        <li class="nav-item  " id="auditProcurementSubmenu">
+		            <a href=# class="nav-link ">
+		                <i class="fa fa-shopping-cart"></i>
+		                <span class="title">Audit Procurement</span>
+		            </a>
+		        </li>
+		    </ul>
+		</li>
+         
+		<!-- ##### ACL TAB ##### -->
+		<!--<li class="nav-item ">
+		    <a href="javascript:;" class="nav-link nav-toggle" id="acmMgmtMenu">
+		        <i class="fa fa-tasks"></i>
+		        <span class="title">Access Control Management</span>
+		        <span class="arrow"></span>
+		    </a>
+		    <ul class="sub-menu">
+		        <li class="nav-item " id="intAcctsACMSubmenu">
+		            <a href=# class="nav-link ">
+		                <i class="fa fa-sign-in"></i>
+		                <span class="title">Internal Accounts ACM</span>
+		            </a>
+		        </li>
+		        <li class="nav-item " id="extAcctsACMSubmenu">
+		            <a href=# class="nav-link ">
+		                <i class="fa fa-sign-out"></i>
+		                <span class="title">External Accounts ACM</span>
+		            </a>
+		        </li>
+		    </ul>
+		</li>-->
+
+		<!-- ##### ACCOUNTS MGMT TAB ##### -->
+		<li class="nav-item ">
+		    <a href="javascript:;" class="nav-link nav-toggle" id="acctsMgmtMenu">
+		        <i class="fa fa-database"></i>
+		        <span class="title">Accounts Management</span>
+		        <span class="arrow"></span>
+		    </a>
+		    <ul class="sub-menu">
+		        <li class="nav-item " id="intAcctsMgmtSubmenu">
+		            <a href="viewAllAccounts" class="nav-link ">
+		                <i class="fa fa-sign-in"></i>
+		                <span class="title">Internal Accounts</span>
+		            </a>
+		        </li>
+		    </ul>
+		</li>
+
+		<!-- ##### WEB CONTENTS TAB ##### -->
+		<li class="nav-item ">
+		    <a href="javascript:;" class="nav-link nav-toggle" id="webContentsMgmtMenu">
+		        <i class="fa fa-connectdevelop"></i>
+		        <span class="title">Web Contents Management</span>
+		        <span class="arrow"></span>
+		    </a>
+		    <ul class="sub-menu">
+		        <li class="nav-item " id="pagesSubmenu">
+		            <a href=# class="nav-link ">
+		                <i class="fa fa-clone"></i>
+		                <span class="title">Pages</span>
+		            </a>
+		        </li>
+		    </ul>
+		</li>
+		
+		
+	<p></p>
+</div>
+

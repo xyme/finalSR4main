@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<!-- COMMON BASE PAGE -->
+
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+
+<!-- BEGIN HEAD -->
+<head>
+    <meta charset="utf-8" />
+    <title>Generate Roster</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta content="" name="kodekode" />
+    <link th:href="@{/assets/global/css/googlefont.css}" rel="stylesheet" type="text/css" />
+    <link th:href="@{/assets/global/plugins/font-awesome/css/font-awesome.min.css}" rel="stylesheet" type="text/css" />
+    <link th:href="@{/assets/global/plugins/simple-line-icons/simple-line-icons.min.css}" rel="stylesheet" type="text/css" />
+    <link th:href="@{/assets/global/plugins/bootstrap/css/bootstrap.min.css}" rel="stylesheet" type="text/css" />
+    <link th:href="@{/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css}" rel="stylesheet" type="text/css" />
+    <!-- END GLOBAL MANDATORY STYLES -->
+    <!-- BEGIN PAGE LEVEL PLUGINS -->
+    <link th:href="@{/assets/global/plugins/datatables/datatables.min.css}" rel="stylesheet" type="text/css" />
+    <link th:href="@{/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css}" rel="stylesheet" type="text/css" />
+    <!-- >> PUT PLUGINS USED HERE <<  -->
+
+    <!-- END PAGE LEVEL PLUGINS -->
+    <!-- BEGIN THEME GLOBAL STYLES -->
+    <link th:href="@{/assets/global/css/components-rounded.min.css}" rel="stylesheet" id="style_components" type="text/css" />
+    <link th:href="@{/assets/global/css/plugins.min.css}" rel="stylesheet" type="text/css" />
+    <!-- END THEME GLOBAL STYLES -->
+    <!-- BEGIN PAGE LEVEL STYLES -->
+    <!-- >> PUT YOUR CUSTOM CSS HERE IF ANY<<  -->
+    <!-- END PAGE LEVEL STYLES -->
+    <!-- BEGIN THEME LAYOUT STYLES -->
+    <link th:href="@{/assets/layouts/layout/css/layout.min.css}" rel="stylesheet" />
+    <link th:href="@{/assets/layouts/layout/css/themes/darkblue.min.css}" rel="stylesheet" />
+    <link th:href="@{/assets/layouts/layout/css/custom.min.css}" rel="stylesheet" />
+    <!-- END THEME LAYOUT STYLES -->
+
+    <link rel="shortcut icon" href="favicon.ico" />
+
+</head>
+<!-- END HEAD -->
+
+
+<body class="page-header-fixed page-sidebar-closed-hide-logo page-content-white">
+<div class="page-wrapper">
+    <!-- BEGIN HEADER -->
+    <div class="page-header navbar navbar-fixed-top">
+        <!-- BEGIN HEADER INNER -->
+        <div class="page-header-inner ">
+
+            <!-- BEGIN LOGO -->
+            <div th:replace="header :: logo"> </div>
+            <!-- END LOGO -->
+
+            <!-- BEGIN RESPONSIVE MENU TOGGLER -->
+            <div th:replace="header :: responsivemenu"> </div>
+            <!-- END RESPONSIVE MENU TOGGLER -->
+
+            <!-- BEGIN TOP NAVIGATION MENU -->
+            <div class="top-menu">
+                <ul class="nav navbar-nav pull-right">
+                    <li th:replace="header :: homebutton"> </li>
+                    <li class="dropdown dropdown-user">
+                        <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                            <span th:text="${name.Staff.Name}" class="username username-hide-on-mobile"> KodeKode </span>
+                            <i class="fa fa-angle-down"></i>
+                        </a>
+                        <ul th:replace="header :: usernamedropdown"> </ul>
+                    </li>
+                </ul>
+            </div>
+            <!-- END TOP NAVIGATION MENU -->
+        </div>
+        <!-- END HEADER INNER -->
+    </div>
+    <!-- END HEADER -->
+
+    <!-- BEGIN HEADER & CONTENT DIVIDER -->
+    <div class="clearfix"> </div>
+    <!-- END HEADER & CONTENT DIVIDER -->
+
+    <!-- BEGIN CONTAINER -->
+    <div class="page-container">
+
+        <!-- BEGIN SIDEBAR -->
+        <div th:replace="sider :: sidebar"> </div>
+        <!-- END SIDEBAR -->
+
+
+
+        <!-- =====NOTE========NOTE===== CONTENT BEGINS HERE!!! =====NOTE========NOTE===== -->
+
+        <!-- BEGIN CONTENT BODY -->
+        <div class="page-content-wrapper">
+            <div class="page-content">
+
+                <!-- BEGIN PAGE HEADER-->
+                <div class="page-bar">
+                    <ul class="page-breadcrumb">
+                        <li>
+                            <a th:href="index">Home</a>
+                            <i class="fa fa-circle"></i>
+                        </li>
+                        <li>
+                            <span>Roster Planning</span>
+                        </li>
+                        <li>
+                            <a th:href="roster-generate">Generate Roster</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- END PAGE HEADER-->
+
+                <p></p>
+
+                <!-- !!! note === note === START OF YOUR CONTENT === note === note !!! -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <!-- BEGIN EXAMPLE TABLE PORTLET-->
+                        <div class="portlet light bordered">
+                            <div class="portlet-title">
+                                <div class="caption font-green">
+                                    <i class="icon-settings font-green"></i>
+                                    <span class="caption-subject bold uppercase">Generate Roster</span>
+                                </div>
+                                <div class="tools">
+                                </div>
+                            </div>
+
+                            <div class="portlet-body">
+                                <form action="roster-generate.html" method="POST" id="roster_generate_form" class="form-horizontal">
+                                    <div class="form-group  margin-top-20" id="locDropdown">
+                                        <label class="control-label col-md-3">Location
+                                        </label>
+                                        <div class="col-md-4">
+                                            <select class="form-control" th:name="roster_loc">
+                                                <option th:each="l:${locs}" th:text="${l}" th:value="${l}"></option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group  margin-top-20" id="monthDropdown">
+                                        <label class="control-label col-md-3">Months
+                                        </label>
+                                        <div class="col-md-4">
+                                            <select class="form-control" th:name="roster_month">
+                                                <option value="">Select Month</option>
+                                                <option th:each="m:${months}" th:text="${m}" th:value="${m}"></option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-actions">
+                                        <div class="row">
+                                            <div class="col-md-offset-3 col-md-9" th:if="${message}">
+                                                <p></p>
+                                                <b><p th:text="${message}"></p></b>
+                                                <p></p>
+                                            </div>
+                                            <div class="col-md-offset-4 col-md-9">
+                                                <button type="submit" class="btn green" onclick="return confirm('Generate Roster?');">Generate</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <p></p>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- !!! note === note === END OF YOUR CONTENT === note === note !!! -->
+
+            </div>
+        </div>
+        <!-- END CONTENT BODY-->
+    </div>
+    <!-- END CONTAINER -->
+
+    <!-- BEGIN FOOTER -->
+    <div th:replace = "footer :: footerbar"> </div>
+    <!-- END FOOTER -->
+
+</div>
+
+
+
+<!-- BEGIN CORE PLUGINS -->
+<script th:src="@{/assets/global/plugins/jquery.min.js}" type="text/javascript"></script>
+<script th:src="@{/assets/global/plugins/bootstrap/js/bootstrap.min.js}" type="text/javascript"></script>
+<script th:src="@{/assets/global/plugins/js.cookie.min.js}" type="text/javascript"></script>
+<script th:src="@{/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js}" type="text/javascript"></script>
+<script th:src="@{/assets/global/plugins/jquery.blockui.min.js}" type="text/javascript"></script>
+<script th:src="@{/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js}" type="text/javascript"></script>
+<!-- END CORE PLUGINS -->
+<!-- BEGIN PAGE LEVEL PLUGINS -->
+<script th:src="@{/assets/global/scripts/datatable.js}" type="text/javascript"></script>
+<script th:src="@{/assets/global/plugins/datatables/datatables.min.js}" type="text/javascript"></script>
+<script th:src="@{/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js}" type="text/javascript"></script>
+<!-- >> PUT ANY PLUGINS USED HERE <<  -->
+
+<!-- END PAGE LEVEL PLUGINS -->
+<!-- BEGIN THEME GLOBAL SCRIPTS -->
+<script th:src="@{/assets/global/scripts/app.min.js}" type="text/javascript"></script>
+<!-- END THEME GLOBAL SCRIPTS -->
+<!-- BEGIN PAGE LEVEL SCRIPTS -->
+<script th:src="@{/assets/pages/scripts/roster-myview.js}" type="text/javascript"></script>
+<!-- END PAGE LEVEL SCRIPTS -->
+<!-- BEGIN THEME LAYOUT SCRIPTS -->
+<script th:src="@{/assets/layouts/layout/scripts/layout.min.js}" type="text/javascript"></script>
+<!-- END THEME LAYOUT SCRIPTS -->
+<script>
+    $(document).ready(function()
+    {
+        $('#clickmewow').click(function()
+        {
+            $('#radio1003').attr('checked', 'checked');
+        });
+    })
+</script>
+</body>
+
+</html>

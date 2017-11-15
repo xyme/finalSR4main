@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<!-- COMMON BASE PAGE -->
+
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+
+<!-- BEGIN HEAD -->
+<head>
+    <meta charset="utf-8" />
+    <title>Update Attendance Home</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta content="" name="kodekode" />
+    <link th:href="@{/assets/global/css/googlefont.css}" rel="stylesheet" type="text/css" />
+    <link th:href="@{/assets/global/plugins/font-awesome/css/font-awesome.min.css}" rel="stylesheet" type="text/css" />
+    <link th:href="@{/assets/global/plugins/simple-line-icons/simple-line-icons.min.css}" rel="stylesheet" type="text/css" />
+    <link th:href="@{/assets/global/plugins/bootstrap/css/bootstrap.min.css}" rel="stylesheet" type="text/css" />
+    <link th:href="@{/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css}" rel="stylesheet" type="text/css" />
+    <!-- END GLOBAL MANDATORY STYLES -->
+    <!-- BEGIN PAGE LEVEL PLUGINS -->
+    <link th:href="@{/assets/global/plugins/datatables/datatables.min.css}" rel="stylesheet" type="text/css" />
+    <link th:href="@{/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css}" rel="stylesheet" type="text/css" />
+    <!-- >> PUT PLUGINS USED HERE <<  -->
+
+    <!-- END PAGE LEVEL PLUGINS -->
+    <!-- BEGIN THEME GLOBAL STYLES -->
+    <link th:href="@{/assets/global/css/components-rounded.min.css}" rel="stylesheet" id="style_components" type="text/css" />
+    <link th:href="@{/assets/global/css/plugins.min.css}" rel="stylesheet" type="text/css" />
+    <!-- END THEME GLOBAL STYLES -->
+    <!-- BEGIN PAGE LEVEL STYLES -->
+    <!-- >> PUT YOUR CUSTOM CSS HERE IF ANY<<  -->
+    <!-- END PAGE LEVEL STYLES -->
+    <!-- BEGIN THEME LAYOUT STYLES -->
+    <link th:href="@{/assets/layouts/layout/css/layout.min.css}" rel="stylesheet" />
+    <link th:href="@{/assets/layouts/layout/css/themes/darkblue.min.css}" rel="stylesheet" />
+    <link th:href="@{/assets/layouts/layout/css/custom.min.css}" rel="stylesheet" />
+    <!-- END THEME LAYOUT STYLES -->
+
+    <link rel="shortcut icon" href="favicon.ico" />
+
+</head>
+<!-- END HEAD -->
+
+
+<body class="page-header-fixed page-sidebar-closed-hide-logo page-content-white">
+<div class="page-wrapper">
+    <!-- BEGIN HEADER -->
+    <div class="page-header navbar navbar-fixed-top">
+        <!-- BEGIN HEADER INNER -->
+        <div class="page-header-inner ">
+
+            <!-- BEGIN LOGO -->
+            <div th:replace="header :: logo"> </div>
+            <!-- END LOGO -->
+
+            <!-- BEGIN RESPONSIVE MENU TOGGLER -->
+            <div th:replace="header :: responsivemenu"> </div>
+            <!-- END RESPONSIVE MENU TOGGLER -->
+
+            <!-- BEGIN TOP NAVIGATION MENU -->
+            <div class="top-menu">
+                <ul class="nav navbar-nav pull-right">
+                    <li th:replace="header :: homebutton"> </li>
+                    <li class="dropdown dropdown-user">
+                        <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                            <span th:text="${name.Staff.Name}" class="username username-hide-on-mobile"> KodeKode </span>
+                            <i class="fa fa-angle-down"></i>
+                        </a>
+                        <ul th:replace="header :: usernamedropdown"> </ul>
+                    </li>
+                </ul>
+            </div>
+            <!-- END TOP NAVIGATION MENU -->
+        </div>
+        <!-- END HEADER INNER -->
+    </div>
+    <!-- END HEADER -->
+
+    <!-- BEGIN HEADER & CONTENT DIVIDER -->
+    <div class="clearfix"> </div>
+    <!-- END HEADER & CONTENT DIVIDER -->
+
+    <!-- BEGIN CONTAINER -->
+    <div class="page-container">
+
+        <!-- BEGIN SIDEBAR -->
+        <div th:replace="sider :: sidebar"> </div>
+        <!-- END SIDEBAR -->
+
+
+
+        <!-- =====NOTE========NOTE===== CONTENT BEGINS HERE!!! =====NOTE========NOTE===== -->
+
+        <!-- BEGIN CONTENT BODY -->
+        <div class="page-content-wrapper">
+            <div class="page-content">
+
+                <!-- BEGIN PAGE HEADER-->
+                <div class="page-bar">
+                    <ul class="page-breadcrumb">
+                        <li>
+                            <a th:href="index">Home</a>
+                            <i class="fa fa-circle"></i>
+                        </li>
+                        <li>
+                            <span>Attendance Management</span>
+                            <i class="fa fa-circle"></i>
+                        </li>
+                        <li>
+                            <a th:href="attend-update-home">Update Attendance Home</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- END PAGE HEADER-->
+
+                <p></p>
+
+                <!-- !!! note === note === START OF YOUR CONTENT === note === note !!! -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <!-- BEGIN EXAMPLE TABLE PORTLET-->
+                        <div class="portlet light bordered">
+                            <div class="portlet-title">
+                                <div class="caption font-green">
+                                    <i class="icon-settings font-green"></i>
+                                    <span class="caption-subject bold uppercase">View Roster Timetable [
+                                        <th:block th:if="${dayList[0]==0}">
+                                            <span th:text="${lastDayPrevMonth+' & '+dayList[1]}"></span>
+                                        </th:block>
+                                        <th:block th:if="${dayList[0]!=0}">
+                                            <span th:each="d, iterStat:${dayList}" th:text="!${iterStat.last} ? ${d}+ ' & ' :${d}"></span>
+                                        </th:block>
+                                        <span th:text="${' '+month+' '+year+' ]'}"></span>
+                                    </span>
+                                </div>
+                                <div class="tools">
+                                </div>
+                            </div>
+
+                            <div class="portlet-body">
+                                <table class="table table-striped table-bordered table-hover order-column" id="roster_viewall_table">
+                                    <thead>
+                                    <tr>
+                                        <th>Staff Team IDs</th>
+                                        <th:block th:each="d:${dayList}">
+                                            <th th:if="${d==0}" th:text="${lastDayPrevMonth}"></th>
+                                            <th th:if="${d!=0}" th:text="${d+' '+month+' '+year}"></th>
+                                        </th:block>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <th:block th:if="${#lists.size(rosters)==10}">
+                                        <tr th:each="i, iterStat:${#numbers.sequence(0, 4)}">
+                                            <td th:text="${rosters[i].team.teamId}"></td>
+                                            <th:block th:if="${#lists.size(dayList)==2}">
+                                                <th:block th:if="${dayList[0]==0}">
+                                                <td th:if="${(timeBetweens[i])}">
+                                                    <u><b><a th:href="@{/attend-update(rosterID=${rosters[i].rosterId}, day=${lastDayPrevMonthInt})}" th:text="${rosters[i].getDay(lastDayPrevMonthInt)}">
+                                                    </a></b></u>
+                                                </td>
+                                                <td th:if="${not(timeBetweens[i])}">
+                                                    <span th:text="${rosters[i].getDay(lastDayPrevMonthInt)}"></span>
+                                                </td>
+                                                </th:block>
+
+                                                <th:block th:if="${dayList[0]!=0}">
+                                                <td th:if="${(timeBetweens[i])}">
+                                                    <u><b><a th:href="@{/attend-update(rosterID=${rosters[i].rosterId}, day=${dayList[0]})}" th:text="${rosters[i].getDay(dayList[0])}">
+                                                    </a></b></u>
+                                                </td>
+                                                <td th:if="${not(timeBetweens[i])}">
+                                                    <span th:text="${rosters[i].getDay(dayList[0])}"></span>
+                                                </td>
+                                                </th:block>
+
+                                            <td th:if="${(timeBetweens[i+5])}">
+                                                <u><b><a th:href="@{/attend-update(rosterID=${rosters[i+5].rosterId}, day=${dayList[1]})}" th:text="${rosters[i+5].getDay(dayList[1])}">
+                                                </a></b></u>
+                                            </td>
+                                            <td th:if="${not (timeBetweens[i+5])}">
+                                                <span th:text="${rosters[i+5].getDay(dayList[1])}"></span>
+                                            </td>
+                                            </th:block>
+
+                                            <th:block th:if="${#lists.size(dayList)==1}">
+                                                <td th:if="${(timeBetweens[i])}">
+                                                    <u><b><a th:href="@{/attend-update(rosterID=${rosters[i].rosterId}, day=${dayList[0]})}" th:text="${rosters[i].getDay(dayList[0])}">
+                                                    </a></b></u>
+                                                </td>
+                                                <td th:if="${not (timeBetweens[i])}">
+                                                    <span th:text="${rosters[i].getDay(dayList[0])}"></span>
+                                                </td>
+                                            </th:block>
+                                        </tr>
+                                    </th:block>
+                                    <th:block th:if="${#lists.size(rosters)==5}">
+                                        <tr th:each="r, rStat:${rosters}">
+                                            <td th:if="${rStat.index}<5" th:text="${r.team.teamId}"></td>
+                                            <th:block th:each="d, dStat:${dayList}">
+                                                <th:block th:if="${dStat.count==1}">
+                                                <td  th:if="${(timeBetweens[rStat.index])}">
+                                                    <u><b><a th:href="@{/attend-update(rosterID=${r.rosterId}, day=${d})}" th:text="${r.getDay(d)}">
+                                                    </a></b></u>
+                                                </td>
+                                                </th:block>
+                                                <th:block th:if="${dStat.count==2}">
+                                                <td th:if="${(timeBetweens[rStat.index+5])}">
+                                                    <u><b><a th:href="@{/attend-update(rosterID=${r.rosterId}, day=${d})}" th:text="${r.getDay(d)}">
+                                                    </a></b></u>
+                                                </td>
+                                                </th:block>
+
+                                                <th:block th:if="${dStat.count==1}">
+                                                <td th:if="${not (timeBetweens[rStat.index])}" th:text="${r.getDay(d)}"></td>
+                                                </th:block>
+                                                <th:block th:if="${dStat.count==2}">
+                                                <td th:if="${not (timeBetweens[rStat.index+5])}" th:text="${r.getDay(d)}"></td>
+                                                </th:block>
+                                            </th:block>
+                                        </tr>
+                                    </th:block>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <p></p>
+
+                            <!--Legend Table-->
+                            <table class="table table-striped table-bordered table-hover order-column" id="legend_table" style="width:300px">
+                                <thead>
+                                <tr>
+                                    <th>Legend</th>
+                                    <th>Representation</th>
+                                </tr>
+                                </thead>
+                                <tbody th:if="${locChar.equalsIgnoreCase('E') OR locChar.equalsIgnoreCase('N') }">
+                                <tr>
+                                    <td>A</td>
+                                    <td>Shift A Timing: 0400 - 1130</td>
+                                </tr>
+                                <tr>
+                                    <td>B</td>
+                                    <td>Shift B Timing: 1100 - 1830</td>
+                                </tr>
+                                <tr>
+                                    <td>C</td>
+                                    <td>Shift C Timing: 1800 - 0130</td>
+                                </tr>
+                                <tr>
+                                    <td>O</td>
+                                    <td>Off</td>
+                                </tr>
+                                <tr>
+                                    <td>S</td>
+                                    <td>Standby</td>
+                                </tr>
+                                </tbody>
+                                <tbody th:if="${locChar.equalsIgnoreCase('D')}">
+                                <tr>
+                                    <td>A</td>
+                                    <td>Shift A Timing: 0400 - 1230</td>
+                                </tr>
+                                <tr>
+                                    <td>B</td>
+                                    <td>Shift B Timing: 1200 - 2030</td>
+                                </tr>
+                                <tr>
+                                    <td>C</td>
+                                    <td>Shift C Timing: 2000 - 0430</td>
+                                </tr>
+                                <tr>
+                                    <td>O</td>
+                                    <td>Off</td>
+                                </tr>
+                                <tr>
+                                    <td>S</td>
+                                    <td>Standby</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- !!! note === note === END OF YOUR CONTENT === note === note !!! -->
+
+            </div>
+        </div>
+        <!-- END CONTENT BODY-->
+    </div>
+    <!-- END CONTAINER -->
+
+    <!-- BEGIN FOOTER -->
+    <div th:replace = "footer :: footerbar"> </div>
+    <!-- END FOOTER -->
+
+</div>
+
+
+
+<!-- BEGIN CORE PLUGINS -->
+<script th:src="@{/assets/global/plugins/jquery.min.js}" type="text/javascript"></script>
+<script th:src="@{/assets/global/plugins/bootstrap/js/bootstrap.min.js}" type="text/javascript"></script>
+<script th:src="@{/assets/global/plugins/js.cookie.min.js}" type="text/javascript"></script>
+<script th:src="@{/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js}" type="text/javascript"></script>
+<script th:src="@{/assets/global/plugins/jquery.blockui.min.js}" type="text/javascript"></script>
+<script th:src="@{/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js}" type="text/javascript"></script>
+<!-- END CORE PLUGINS -->
+<!-- BEGIN PAGE LEVEL PLUGINS -->
+<script th:src="@{/assets/global/scripts/datatable.js}" type="text/javascript"></script>
+<script th:src="@{/assets/global/plugins/datatables/datatables.min.js}" type="text/javascript"></script>
+<script th:src="@{/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js}" type="text/javascript"></script>
+<!-- >> PUT ANY PLUGINS USED HERE <<  -->
+
+<!-- END PAGE LEVEL PLUGINS -->
+<!-- BEGIN THEME GLOBAL SCRIPTS -->
+<script th:src="@{/assets/global/scripts/app.min.js}" type="text/javascript"></script>
+<!-- END THEME GLOBAL SCRIPTS -->
+<!-- BEGIN PAGE LEVEL SCRIPTS -->
+<script th:src="@{/assets/pages/scripts/attend-update-home.js}" type="text/javascript"></script>
+<!-- END PAGE LEVEL SCRIPTS -->
+<!-- BEGIN THEME LAYOUT SCRIPTS -->
+<script th:src="@{/assets/layouts/layout/scripts/layout.min.js}" type="text/javascript"></script>
+<!-- END THEME LAYOUT SCRIPTS -->
+<script>
+    $(document).ready(function()
+    {
+        $('#clickmewow').click(function()
+        {
+            $('#radio1003').attr('checked', 'checked');
+        });
+    })
+</script>
+</body>
+
+</html>

@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<!-- INDEX PAGE -->
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<!-- BEGIN HEAD -->
+	<head>
+		<meta charset="utf-8" />
+		<title>Home Page</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta content="width=device-width, initial-scale=1" name="viewport" />
+		<meta content="" name="kodekode" />
+		<link th:href="@{/assets/global/css/googlefont.css}" rel="stylesheet" type="text/css" />
+		<link th:href="@{/assets/global/plugins/font-awesome/css/font-awesome.min.css}" rel="stylesheet" type="text/css" />
+		<link th:href="@{/assets/global/plugins/simple-line-icons/simple-line-icons.min.css}" rel="stylesheet" type="text/css" />
+		<link th:href="@{/assets/global/plugins/bootstrap/css/bootstrap.min.css}" rel="stylesheet" type="text/css" />
+		<link th:href="@{/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css}" rel="stylesheet" type="text/css" />
+		<!-- END GLOBAL MANDATORY STYLES -->
+		<!-- BEGIN PAGE LEVEL PLUGINS -->
+		<!-- END PAGE LEVEL PLUGINS -->
+		<!-- BEGIN THEME GLOBAL STYLES -->
+		<link th:href="@{/assets/global/css/components-rounded.min.css}" rel="stylesheet" id="style_components" type="text/css" />
+		<link th:href="@{/assets/global/css/plugins.min.css}" rel="stylesheet" type="text/css" />
+		<!-- END THEME GLOBAL STYLES -->
+		<!-- BEGIN THEME LAYOUT STYLES -->
+		<link th:href="@{/assets/layouts/layout/css/layout.min.css}" rel="stylesheet" />
+		<link th:href="@{/assets/layouts/layout/css/themes/darkblue.min.css}" rel="stylesheet" />
+		<link th:href="@{/assets/layouts/layout/css/custom.min.css}" rel="stylesheet" />
+		<!-- END THEME LAYOUT STYLES -->
+	
+		<link rel="shortcut icon" href="favicon.ico" /> 
+        
+         <style>
+        .msgPreview {
+            width: 12em;
+            display: block;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        }
+        </style>
+	</head>
+<!-- END HEAD -->
+
+
+    <body onload="startTime()" class="page-header-fixed page-sidebar-closed-hide-logo page-content-white">
+        <div class="page-wrapper">
+            <!-- BEGIN HEADER -->
+            <div class="page-header navbar navbar-fixed-top">
+                <!-- BEGIN HEADER INNER -->
+                <div class="page-header-inner ">
+                    
+                    <!-- BEGIN LOGO -->
+                    <div th:replace="header :: logo"> </div>
+                    <!-- END LOGO -->
+                    
+                    <!-- BEGIN RESPONSIVE MENU TOGGLER -->
+                    <div th:replace="header :: responsivemenu"> </div>
+                    <!-- END RESPONSIVE MENU TOGGLER -->
+                    
+                    <!-- BEGIN TOP NAVIGATION MENU -->
+                    <div class="top-menu">
+               			<ul class="nav navbar-nav pull-right">
+					        <li th:replace="header :: homebutton"> </li>
+               				<li class="dropdown dropdown-user">
+               					<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+           							<span th:text="${name.Staff.Name}" class="username username-hide-on-mobile"> KodeKode </span>
+                						<i class="fa fa-angle-down"></i>
+           						</a>
+           						<ul th:replace="header :: usernamedropdown"> </ul>
+               				</li>
+               			</ul>
+                    </div>
+                    <!-- END TOP NAVIGATION MENU -->
+                </div>
+                <!-- END HEADER INNER -->
+            </div>
+            <!-- END HEADER -->
+
+            <!-- BEGIN HEADER & CONTENT DIVIDER -->
+            <div class="clearfix"> </div>
+            <!-- END HEADER & CONTENT DIVIDER -->
+
+            <!-- BEGIN CONTAINER -->
+            <div class="page-container">
+                
+                <!-- BEGIN SIDEBAR -->
+                <div th:replace="sider :: sidebar"> </div>
+                <!-- END SIDEBAR -->
+
+
+
+<!-- =====NOTE========NOTE===== CONTENT BEGINS HERE!!! =====NOTE========NOTE===== -->   
+
+                <!-- BEGIN CONTENT BODY -->
+                <div class="page-content-wrapper">
+                    <div class="page-content">
+                        
+                        <!-- !!! note === note === START OF YOUR CONTENT === note === note !!! -->
+                        <div class="row">
+                   			<div class="col-md-12">
+                        			<div class="portlet light"">
+                        				<div class="portlet-title">
+                        					<h2 class="font-grey-mint"> Welcome </h2>
+                        				</div>
+              						<div class="portlet-body">
+              							<div th:if="${name}">
+			                        			<h2 th:text="${name.Staff.Name}"  > User </h2>
+                        					</div>
+                        					<p></p>
+                        					<!-- <h4>
+                        						<span id="time" class="font-blue-steel"></span>
+                        						<span id="date" class="font-blue-steel"></span>
+                        					</h4> -->
+                        					<h3 id="time" class="font-blue-steel bold"></h3>
+                        					<p></p>
+                        					<h5 id="date" class="font-blue-steel"></h5>
+              						</div>
+                        			</div>
+                        		</div>
+                        </div>
+                        
+                        <!-- BEGIN MSG TABLE -->
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="portlet box blue-hoki">
+                                    <div class="portlet-title">
+                                        <div class="caption">
+                                            <i class="fa fa-bullhorn"></i> Announcements  </div>
+                                        <div class="tools">
+                                            <a href="javascript:;" class="collapse"> </a>
+                                            <a href="javascript:;" class="reload"> </a>
+                                            <a href="javascript:;" class="remove"> </a>
+                                        </div>
+                                    </div>
+                                    <div class="portlet-body">
+                                        <div class="table-scrollable">
+                                            <table class="table table-striped table-bordered table-advance table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th> Sender </th>
+                                                        <th> Message Preview </th>
+                                                        <th> Time Sent </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                <div th:if = "${A}">
+                                                     <tr th:each="i:${A}">
+                                                       <td th:text="${i.sendMessage.userID}"  ></td>
+                                                        <td><span class="msgPreview" th:text="${i.sendMessage.Description}"></span></td>
+                                                         <td th:text="${i.sendMessage.TimeSent}"  ></td>
+                                                    </tr>
+                                                    </div>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <a href=/staff-viewAnnouncement class="btn btn-circle btn-sm blue-steel"></i>View All</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END MSG TABLE -->
+
+                        <!-- BEGIN NOTI TABLE -->
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="portlet box red-sunglo">
+                                    <div class="portlet-title">
+                                        <div class="caption">
+                                            <i class="fa fa-bell-o"></i>Notifications </div>
+                                        <div class="tools">
+                                            <a href="javascript:;" class="collapse"> </a>
+                                            <a href="javascript:;" class="reload"> </a>
+                                            <a href="javascript:;" class="remove"> </a>
+                                        </div>
+                                    </div>
+                                    <div class="portlet-body">
+                                        <div class="table-scrollable">
+                                            <table class="table table-striped table-bordered table-advance table-hover">
+                                                <thead>
+                                                    <tr>
+                                                    
+                                                        <th> Sender </th>
+                                                        <th> Message Preview </th>
+                                                        <th> Time </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <div th:if = "${N}">
+                                                     <tr th:each="i:${N}">
+                                                       <td th:text="${i.sendMessage.userID}"  ></td>
+                                                        <td><span class="msgPreview" th:text="${i.sendMessage.Description}"></span></td>
+                                                         <td th:text="${i.sendMessage.TimeSent}"  ></td>
+                                                    </tr>
+                                                    </div>
+                                                    
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <a href=/staff-viewNotification class="btn btn-circle btn-sm grey-mint"></i>View All</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END NOTI TABLE -->
+
+                        <!-- BEGIN ANNOUNCE TABLE -->
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="portlet box yellow">
+                                    <div class="portlet-title">
+                                        <div class="caption">
+                                            <i class="fa fa-envelope-o"></i>Messages </div>
+                                        <div class="tools">
+                                            <a href="javascript:;" class="collapse"> </a>
+                                            <a href="javascript:;" class="reload"> </a>
+                                            <a href="javascript:;" class="remove"> </a>
+                                        </div>
+                                    </div>
+                                    <div class="portlet-body">
+                                        <div class="table-scrollable">
+                                            <table class="table table-striped table-bordered table-advance table-hover">
+                                                <thead>
+                                                    <tr>
+                                                
+                                                        <th> Sender </th>
+                                                        <th> Message Preview </th>
+                                                        <th> Time </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                  <div th:if = "${M}">
+                                                     <tr th:each="i:${M}">
+                                                       <td th:text="${i.sendMessage.userID}"  ></td>
+                                                        <td><span class="msgPreview" th:text="${i.sendMessage.Description}"></span></td>
+                                                         <td th:text="${i.sendMessage.TimeSent}" ></td>
+                                                    </tr>
+                                                    </div>
+                                                    
+                                                    
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <a href=/staff-viewMessages class="btn btn-circle btn-sm red-flamingo"></i>View All</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END ANNOUNCE TABLE -->	
+                        	
+                        	
+                        	<!-- !!! note === note === END OF YOUR CONTENT === note === note !!! -->
+                        
+                    </div>
+                </div>
+                <!-- END CONTENT BODY-->
+            </div>
+            <!-- END CONTAINER -->
+            
+            <!-- BEGIN FOOTER -->
+            <div th:replace = "footer :: footerbar"> </div>
+            <!-- END FOOTER -->
+            
+        </div>
+        
+
+
+		<!-- BEGIN CORE PLUGINS -->
+		<script th:src="@{/assets/global/plugins/jquery.min.js}" type="text/javascript"></script>
+		<script th:src="@{/assets/global/plugins/bootstrap/js/bootstrap.min.js}" type="text/javascript"></script>
+		<script th:src="@{/assets/global/plugins/js.cookie.min.js}" type="text/javascript"></script>
+		<script th:src="@{/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js}" type="text/javascript"></script>
+		<script th:src="@{/assets/global/plugins/jquery.blockui.min.js}" type="text/javascript"></script>
+		<script th:src="@{/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js}" type="text/javascript"></script>
+		<!-- END CORE PLUGINS -->
+		<!-- BEGIN PAGE LEVEL PLUGINS -->
+		<!-- END PAGE LEVEL PLUGINS -->
+		<!-- BEGIN THEME GLOBAL SCRIPTS -->
+		<script th:src="@{/assets/global/scripts/app.min.js}" type="text/javascript"></script>
+		<!-- END THEME GLOBAL SCRIPTS -->
+		<!-- BEGIN PAGE LEVEL SCRIPTS -->
+		<script th:src="@{/assets/pages/scripts/index-welcomemsg.js}" type="text/javascript"></script>
+		<!-- END PAGE LEVEL SCRIPTS -->
+		<!-- BEGIN THEME LAYOUT SCRIPTS -->
+		<script th:src="@{/assets/layouts/layout/scripts/layout.min.js}" type="text/javascript"></script>
+		<!-- END THEME LAYOUT SCRIPTS -->
+        <script>
+            $(document).ready(function()
+            {
+                $('#clickmewow').click(function()
+                {
+                    $('#radio1003').attr('checked', 'checked');
+                });
+            })
+        </script>
+    </body>
+
+</html>

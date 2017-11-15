@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<!-- WEEKDAY TIMETABLE PAGE -->
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<!-- BEGIN HEAD -->
+	<head>
+		<meta charset="utf-8" />
+		<title>Weekday Timetable</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta content="width=device-width, initial-scale=1" name="viewport" />
+		<meta content="" name="kodekode" />
+		<link th:href="@{/assets/global/css/googlefont.css}" rel="stylesheet" type="text/css" />
+		<link th:href="@{/assets/global/plugins/font-awesome/css/font-awesome.min.css}" rel="stylesheet" type="text/css" />
+		<link th:href="@{/assets/global/plugins/simple-line-icons/simple-line-icons.min.css}" rel="stylesheet" type="text/css" />
+		<link th:href="@{/assets/global/plugins/bootstrap/css/bootstrap.min.css}" rel="stylesheet" type="text/css" />
+		<link th:href="@{/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css}" rel="stylesheet" type="text/css" />
+		<!-- END GLOBAL MANDATORY STYLES -->
+		<!-- BEGIN PAGE LEVEL PLUGINS -->
+		<link th:href="@{/assets/global/plugins/datatables/datatables.min.css}" rel="stylesheet" type="text/css" />
+        <link th:href="@{/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css}" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.css"/>
+		<!-- END PAGE LEVEL PLUGINS -->
+		<!-- BEGIN THEME GLOBAL STYLES -->
+		<link th:href="@{/assets/global/css/components-rounded.min.css}" rel="stylesheet" id="style_components" type="text/css" />
+		<link th:href="@{/assets/global/css/plugins.min.css}" rel="stylesheet" type="text/css" />
+		<!-- END THEME GLOBAL STYLES -->
+		<!-- BEGIN THEME LAYOUT STYLES -->
+		<link th:href="@{/assets/layouts/layout/css/layout.min.css}" rel="stylesheet" />
+		<link th:href="@{/assets/layouts/layout/css/themes/darkblue.min.css}" rel="stylesheet" />
+		<link th:href="@{/assets/layouts/layout/css/custom.min.css}" rel="stylesheet" />
+		<!-- END THEME LAYOUT STYLES -->
+	
+		<link rel="shortcut icon" href="favicon.ico" /> 
+        
+	</head>
+<!-- END HEAD -->
+
+
+    <body class="page-header-fixed page-sidebar-closed-hide-logo page-content-white">
+        <div class="page-wrapper">
+            <!-- BEGIN HEADER -->
+            <div class="page-header navbar navbar-fixed-top">
+                <!-- BEGIN HEADER INNER -->
+                <div class="page-header-inner ">
+                    
+                    <!-- BEGIN LOGO -->
+                    <div th:replace="header :: logo"> </div>
+                    <!-- END LOGO -->
+                    
+                    <!-- BEGIN RESPONSIVE MENU TOGGLER -->
+                    <div th:replace="header :: responsivemenu"> </div>
+                    <!-- END RESPONSIVE MENU TOGGLER -->
+                    
+                    <!-- BEGIN TOP NAVIGATION MENU -->
+                    <div class="top-menu">
+               			<ul class="nav navbar-nav pull-right">
+					        <li th:replace="header :: homebutton"> </li>
+               				<li class="dropdown dropdown-user">
+               					<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+           							<span th:text="${name.Staff.Name}" class="username username-hide-on-mobile"> KodeKode </span>
+                						<i class="fa fa-angle-down"></i>
+           						</a>
+           						<ul th:replace="header :: usernamedropdown"> </ul>
+               				</li>
+               			</ul>
+                    </div>
+                    <!-- END TOP NAVIGATION MENU -->
+                </div>
+                <!-- END HEADER INNER -->
+            </div>
+            <!-- END HEADER -->
+
+            <!-- BEGIN HEADER & CONTENT DIVIDER -->
+            <div class="clearfix"> </div>
+            <!-- END HEADER & CONTENT DIVIDER -->
+
+            <!-- BEGIN CONTAINER -->
+            <div class="page-container">
+                
+                <!-- BEGIN SIDEBAR -->
+                <div th:replace="sider :: sidebar"> </div>
+                <!-- END SIDEBAR -->
+
+
+
+<!-- =====NOTE========NOTE===== CONTENT BEGINS HERE!!! =====NOTE========NOTE===== -->   
+
+                <!-- BEGIN CONTENT BODY -->
+                <div class="page-content-wrapper">
+					<div class="page-content">
+	
+						<!-- !!! note === note === START OF YOUR CONTENT === note === note !!! -->
+						<div class="page-bar">
+							<ul class="page-breadcrumb">
+								<li><a th:href="index">Home</a> <i class="fa fa-circle"></i>
+								</li>
+								<li><a href=#>Timetables</a> <i
+									class="fa fa-circle"></i></li>
+								<li><a th:href="route-timetable-wkday-viewall"><b>Weekday</b></a> <i
+									class="fa fa-circle"></i></li>
+								<li><a th:href="route-timetable-wkend-viewall"><b>Weekend</b></a>
+							</ul>
+						</div>
+	
+						<p></p>
+	
+						<!-- DATATABLE NO TABS -->
+												
+						<div class="row">
+							<div class="col-md-12">
+								<div class="portlet light bordered">
+									<div class="portlet-title">
+										<div class="caption">
+											<i class="fa fa-arrows-v font-red-flamingo"></i> 
+											<span class="caption-subject font-red-intense bold uppercase"> NS Line </span>
+											<span class="caption-subject font-blue-steel bold uppercase"> Weekday Timetable </span>
+										</div>
+										<div class="tools"></div>
+									</div>
+									<div class="portlet-body">
+										<table id="timetable_NS1_wkday"
+											class="table table-striped table-bordered table-hover order-column">
+											<thead>
+												<tr>
+													<th class="headcol" style="width: 50px">Service</th>
+													<th:block th:each="headersNS : ${nsStations}">
+														<th th:text="${headersNS}" style="width: 50px">Header
+															Field</th>
+														<!-- <th th:colspan="${headerFields.length}" th:text="${h}">Header Field</th> -->
+													</th:block>
+												</tr>
+											</thead>
+											<tbody>
+												<tr th:each="scheduleOfEachServiceNS : ${allSchedulesNS}">
+													<th:block th:each="timeNS : ${scheduleOfEachServiceNS}">
+														<td th:text="${timeNS != null} ? ${timeNS} : ${'-'}"
+															style="width: 50px">Time</td>
+														<!-- <td th:text="${time}">Dataset Field</td> -->
+													</th:block>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<div class="portlet light bordered">
+									<div class="portlet-title">
+										<div class="caption">
+											<i class="fa fa-arrows-h font-green"></i> 
+											<span class="caption-subject font-green-jungle bold uppercase"> EW Line </span>
+											<span class="caption-subject font-blue-steel bold uppercase"> Weekday Timetable </span>
+										</div>
+										<div class="tools"></div>
+									</div>
+									<div class="portlet-body">
+										<table id="timetable_EW1_wkday" class="table table-striped table-bordered table-hover order-column">
+											<thead>
+												<tr>
+													<th class="headcol" style="width: 50px">Service</th>
+													<th:block th:each="headersEW : ${ewStations}">
+														<th th:text="${headersEW}" style="width: 50px">Header
+															Field</th>
+														<!-- <th th:colspan="${headerFields.length}" th:text="${h}">Header Field</th> -->
+													</th:block>
+												</tr>
+											</thead>
+											<tbody>
+												<tr th:each="scheduleOfEachServiceEW : ${allSchedulesEW}">
+													<th:block th:each="timeEW : ${scheduleOfEachServiceEW}">
+														<td th:text="${timeEW != null} ? ${timeEW} : ${'-'}"
+															style="width: 50px">Time</td>
+														<!-- <td th:text="${time}">Dataset Field</td> -->
+													</th:block>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						<div class="row">
+							<div class="col-md-12">
+								<div class="portlet light bordered">
+									<div class="portlet-title">
+										<div class="caption">
+											<i class="fa fa-arrows-v font-red-flamingo"></i> 
+											<span class="caption-subject font-red-intense bold uppercase"> SN Line </span>
+											<span class="caption-subject font-blue-steel bold uppercase"> Weekday Timetable </span>
+										</div>
+										<div class="tools"></div>
+									</div>
+									<div class="portlet-body">
+										<table id="timetable_NS2_wkday"
+											class="table table-striped table-bordered table-hover order-column">
+											<thead>
+												<tr>
+													<th class="headcol" style="width: 50px">Service</th>
+													<th:block th:each="headersSN : ${snStations}">
+														<th th:text="${headersSN}" style="width: 50px">Header
+															Field</th>
+														<!-- <th th:colspan="${headerFields.length}" th:text="${h}">Header Field</th> -->
+													</th:block>
+												</tr>
+											</thead>
+											<tbody>
+												<tr th:each="scheduleOfEachServiceSN : ${allSchedulesSN}">
+													<th:block th:each="timeSN : ${scheduleOfEachServiceSN}">
+														<td th:text="${timeSN != null} ? ${timeSN} : ${'-'}"
+															style="width: 50px">Time</td>
+														<!-- <td th:text="${time}">Dataset Field</td> -->
+													</th:block>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<div class="portlet light bordered">
+									<div class="portlet-title">
+										<div class="caption">
+											<i class="fa fa-arrows-h font-green"></i> 
+											<span class="caption-subject font-green-jungle bold uppercase"> WE Line </span>
+											<span class="caption-subject font-blue-steel bold uppercase"> Weekday Timetable </span>
+										</div>
+										<div class="tools"></div>
+									</div>
+									<div class="portlet-body">
+										<table id="timetable_EW2_wkday" class="table table-striped table-bordered table-hover order-column">
+											<thead>
+												<tr>
+													<th class="headcol" style="width: 50px">Service</th>
+													<th:block th:each="headersWE : ${weStations}">
+														<th th:text="${headersWE}" style="width: 50px">Header
+															Field</th>
+														<!-- <th th:colspan="${headerFields.length}" th:text="${h}">Header Field</th> -->
+													</th:block>
+												</tr>
+											</thead>
+											<tbody>
+												<tr th:each="scheduleOfEachServiceWE : ${allSchedulesWE}">
+													<th:block th:each="timeWE : ${scheduleOfEachServiceWE}">
+														<td th:text="${timeWE != null} ? ${timeWE} : ${'-'}"
+															style="width: 50px">Time</td>
+														<!-- <td th:text="${time}">Dataset Field</td> -->
+													</th:block>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+					</div>
+				</div>
+                              
+                              
+                         <!-- end all tables -->     
+			</div>
+		</div>
+                        
+                        
+                        <p></p>
+                        
+                        <div class="clearfix margin-bottom-20"> </div>
+                        
+                        
+            
+            <!-- BEGIN FOOTER -->
+            <div th:replace = "footer :: footerbar"> </div>
+            <!-- END FOOTER -->
+
+        
+
+
+		<!-- BEGIN CORE PLUGINS -->
+		<script th:src="@{/assets/global/plugins/jquery.min.js}" type="text/javascript"></script>
+		<script th:src="@{/assets/global/plugins/bootstrap/js/bootstrap.min.js}" type="text/javascript"></script>
+		<script th:src="@{/assets/global/plugins/js.cookie.min.js}" type="text/javascript"></script>
+		<script th:src="@{/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js}" type="text/javascript"></script>
+		<script th:src="@{/assets/global/plugins/jquery.blockui.min.js}" type="text/javascript"></script>
+		<script th:src="@{/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js}" type="text/javascript"></script>
+		<!-- END CORE PLUGINS -->
+		<!-- BEGIN PAGE LEVEL PLUGINS -->
+		<script th:src="@{/assets/global/plugins/bootstrap-tabdrop/js/bootstrap-tabdrop.js}" type="text/javascript"></script>
+        <script th:src="@{/assets/global/scripts/datatable.js}" type="text/javascript"></script>
+        <script th:src="@{/assets/global/plugins/datatables/datatables.min.js}" type="text/javascript"></script>
+        <script th:src="@{/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js}" type="text/javascript"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/fixedcolumns/3.2.3/js/dataTables.fixedColumns.js"></script>
+		<!-- END PAGE LEVEL PLUGINS -->
+		<!-- BEGIN THEME GLOBAL SCRIPTS -->
+		<script th:src="@{/assets/global/scripts/app.min.js}" type="text/javascript"></script>
+		<!-- END THEME GLOBAL SCRIPTS -->
+		<!-- BEGIN PAGE LEVEL SCRIPTS -->
+		<script th:src="@{/assets/pages/scripts/route-timetable-wkday-viewall.js}" type="text/javascript"></script>
+		<!-- END PAGE LEVEL SCRIPTS -->
+		<!-- BEGIN THEME LAYOUT SCRIPTS -->
+		<script th:src="@{/assets/layouts/layout/scripts/layout.min.js}" type="text/javascript"></script>
+		<!-- END THEME LAYOUT SCRIPTS -->
+        <script>
+            $(document).ready(function()
+            {
+                $('#clickmewow').click(function()
+                {
+                    $('#radio1003').attr('checked', 'checked');
+                });
+            })
+        </script>
+    </body>
+
+</html>
