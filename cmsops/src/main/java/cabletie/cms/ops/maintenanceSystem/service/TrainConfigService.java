@@ -2,9 +2,11 @@ package cabletie.cms.ops.maintenanceSystem.service;
 
 import cabletie.cms.ops.corporateDBModel.SystemAccount;
 import cabletie.cms.ops.operationDBDao.infraDAO.depotDAO.DepotDAO;
+import cabletie.cms.ops.operationDBDao.routeTimeDAO.RouteTrainDAO;
 import cabletie.cms.ops.operationDBDao.train.RollingStockDAO;
 import cabletie.cms.ops.operationDBDao.train.TrainDAO;
 import cabletie.cms.ops.operationDBModel.maintenance.MaintenanceTask;
+import cabletie.cms.ops.operationDBModel.routeTime.RouteTrain;
 import cabletie.cms.ops.operationDBModel.train.RollingStock;
 import cabletie.cms.ops.operationDBModel.train.Train;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +26,8 @@ public class TrainConfigService {
     TrainDAO tDao;
     @Autowired
     DepotDAO depotDao;
+    @Autowired 
+    RouteTrainDAO routeTrainDAO;
 
     /**
      * *Get Method* - Retrieve Rolling Stock
@@ -176,5 +180,19 @@ public class TrainConfigService {
         t.setRolling(new ArrayList<RollingStock>());
 
         tDao.save(t);
+    }
+    
+    public boolean checkAssignment(String trainID) {
+    	
+    	List<RouteTrain> trainList = routeTrainDAO.findAll();
+    	
+    	boolean assigned = false;
+    	for (RouteTrain rt : trainList) {
+    		if(trainID.equals(rt.getTrainID())){
+    			assigned = true;
+    		}
+    	}
+    	
+    	return assigned;
     }
 }

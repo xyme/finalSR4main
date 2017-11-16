@@ -216,8 +216,14 @@ public class TrainConfigController {
 
     @GetMapping("/trainconfig-delete")
     public String deleteTrainConfig(@RequestParam("trainID") String id){
+        
+        
+        if(trainSvc.checkAssignment(id)) {
+        	return "redirect:/trainconfig-error";
+        }
+        
         trainSvc.removeTrain(id);
-
+        
         return "redirect:/trainconfig-viewall";
     }
 }
